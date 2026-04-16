@@ -1,0 +1,215 @@
+@use '../../../Variables.scss' as *;
+
+// ===== KITOBLAR SEARCH WRAP =====
+.kitoblar-search-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+// ===== SEARCH BAR =====
+.kitoblar-search-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: $card-bg;
+    border: 1.5px solid $border-color;
+    border-radius: 14px;
+    padding: 8px 10px 8px 20px;
+    transition: all 0.3s ease;
+    box-shadow: $shadow-md;
+
+    @media (max-width: 600px) {
+        padding: 6px 8px 6px 16px;
+        gap: 10px;
+        border-radius: 12px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 5px 6px 5px 14px;
+        gap: 8px;
+        border-radius: 10px;
+    }
+
+    &:focus-within {
+        border-color: $border-hover;
+        box-shadow: 0 0 0 3px $accent-shadow, $shadow-md;
+        background: $bg-secondary;
+    }
+}
+
+// ===== INPUT GROUP =====
+.ks-input-group {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ks-icon {
+    display: flex;
+    align-items: center;
+    color: $accent-secondary;
+    flex-shrink: 0;
+    transition: color 0.2s ease;
+
+    .kitoblar-search-bar:focus-within & {
+        color: $accent-primary;
+    }
+}
+
+.ks-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    font-weight: 400;
+    color: $text-primary;
+    padding: 10px 0;
+    letter-spacing: 0.01em;
+
+    @media (max-width: 600px) {
+        font-size: 14px;
+        padding: 8px 0;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 13px;
+        padding: 6px 0;
+    }
+
+    &::placeholder {
+        color: $text-muted;
+        font-weight: 400;
+
+        @media (max-width: 600px) {
+            font-size: 14px;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 13px;
+        }
+    }
+}
+
+.ks-clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.06);
+    color: $text-muted;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+
+    @media (max-width: 600px) {
+        width: 24px;
+        height: 24px;
+    }
+
+    @media (max-width: 480px) {
+        width: 22px;
+        height: 22px;
+    }
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: $text-primary;
+        transform: scale(1.1);
+    }
+}
+
+// ===== DIVIDER =====
+.kitoblar-search-bar::before {
+    display: none;
+}
+
+// ===== VIEW TOGGLES =====
+.ks-view-toggles {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding-left: 12px;
+    border-left: 1px solid $border-color;
+
+    @media (max-width: 900px) {
+        padding-left: 10px;
+    }
+
+    @media (max-width: 768px) {
+        display: none;
+    }
+}
+
+.ks-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: $text-muted;
+    cursor: pointer;
+    transition: all 0.22s ease;
+
+    @media (max-width: 900px) {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+    }
+
+    &:hover {
+        color: $text-secondary;
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    &.active {
+        background: $accent-hover;
+        border-color: $border-color;
+        color: $accent-primary;
+        box-shadow: 0 2px 8px $accent-shadow;
+    }
+}
+
+// ===== HINT =====
+.ks-hint {
+    font-size: 12px;
+    color: $text-muted;
+    padding-left: 4px;
+    margin: 0;
+    animation: fadeIn 0.2s ease;
+
+    @media (max-width: 600px) {
+        font-size: 11px;
+        padding-left: 2px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 10px;
+        padding-left: 2px;
+    }
+
+    .ks-query {
+        color: $accent-primary;
+        font-weight: 600;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,15 @@
+@use '../../../Mixin.scss' as *;
+@use '../../../Variables.scss' as *;
+
+.status-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    @media (max-width: 768px) {
+        gap: 16px;
+    }
+}

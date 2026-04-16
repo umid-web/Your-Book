@@ -1,0 +1,194 @@
+@use '../../../Mixin.scss' as *;
+@use '../../../Variables.scss' as *;
+
+.wallet-section-v2 {
+    margin-bottom: 40px;
+    width: 100%;
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+
+        .title {
+            @include font-style(20px, 800, 1.2);
+            color: var(--text-primary);
+        }
+
+        .market-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border-radius: 20px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            font-size: 12px;
+            font-weight: 700;
+        }
+    }
+}
+
+.wallet-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+
+    @media (max-width: 900px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.wallet-card-v2 {
+    position: relative;
+    padding: 32px;
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        border-color: var(--border-hover);
+    }
+
+    .card-glare {
+        position: absolute;
+        top: -100%;
+        left: -100%;
+        width: 300%;
+        height: 300%;
+        background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05), transparent 50%);
+        pointer-events: none;
+    }
+
+    .card-top {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .icon-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: var(--bg-tertiary);
+            color: var(--accent-primary);
+        }
+
+        .card-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    }
+
+    .card-balance {
+        .amount {
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .currency {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+        }
+    }
+
+    &.ybc-card {
+        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        
+        .conversion-row {
+            display: flex;
+            gap: 24px;
+            padding: 16px;
+            background: var(--bg-tertiary);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+
+            .conv-item {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+
+                .conv-label { font-size: 10px; font-weight: 800; color: var(--text-muted); }
+                .conv-val { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+            }
+        }
+
+        .deposit-btn {
+            background: linear-gradient(to right, var(--accent-secondary), var(--accent-primary));
+            color: var(--text-on-accent);
+            border: none;
+            padding: 12px;
+            border-radius: 14px;
+            @include font-style(14px, 800, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+
+            &:hover {
+                transform: scale(1.02);
+                background: var(--accent-secondary);
+            }
+        }
+    }
+
+    &.gold-card {
+        background: radial-gradient(circle at top right, var(--accent-hover), transparent),
+                    linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+        border-color: var(--border-hover);
+
+        .gold-value-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--accent-primary);
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            .footer-info {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                font-size: 11px;
+                color: var(--text-muted);
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .wallet-card-v2 {
+        padding: 24px;
+        
+        .card-balance .amount { font-size: 32px; }
+        .conversion-row { gap: 12px; flex-direction: column; }
+    }
+}

@@ -1,0 +1,273 @@
+@use '../Mixin.scss' as *;
+@use '../Variables.scss' as *;
+
+/* =============================================
+   Themes - Dark Blue & Gold
+   ============================================= */
+
+:root {
+  /* Premium Dark Mode (Royal Navy & Champagne Gold) */
+  --bg-primary: #050811;
+  --bg-secondary: #0a0f1d;
+  --bg-tertiary: #131a2b;
+  --card-bg: rgba(10, 15, 29, 0.75);
+  --navbar-bg: rgba(5, 8, 17, 0.95);
+
+  --accent-primary: #d4af37;
+  --accent-secondary: #aa8a2e;
+  --accent-hover: rgba(212, 175, 55, 0.15);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #475569;
+
+  --border-color: rgba(212, 175, 55, 0.15);
+  --border-hover: rgba(212, 175, 55, 0.35);
+
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+  --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
+
+  --success: #10b981;
+  --success-bg: rgba(16, 185, 129, 0.1);
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --error-bg: rgba(239, 68, 68, 0.1);
+  --info: #3b82f6;
+
+  --accent-shadow: rgba(212, 175, 55, 0.25);
+  --text-on-accent: #050811;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #050811;
+  --bg-secondary: #0a0f1d;
+  --bg-tertiary: #131a2b;
+  --card-bg: rgba(10, 15, 29, 0.75);
+  --navbar-bg: rgba(5, 8, 17, 0.95);
+
+  --accent-primary: #d4af37;
+  --accent-secondary: #aa8a2e;
+  --accent-hover: rgba(212, 175, 55, 0.15);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #475569;
+
+  --border-color: rgba(212, 175, 55, 0.15);
+  --border-hover: rgba(212, 175, 55, 0.35);
+
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+  --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
+
+  --accent-shadow: rgba(212, 175, 55, 0.25);
+  --text-on-accent: #050811;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="light"] {
+  /* Light Mode (Still keeping blue/gold essence but lighter) */
+  --bg-primary: #f0f4f8;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e1e8f0;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --navbar-bg: rgba(255, 255, 255, 0.95);
+
+  --accent-primary: #B8860B;
+  /* Dark Goldenrod */
+  --accent-secondary: #DAA520;
+  /* Goldenrod */
+  --accent-hover: rgba(184, 134, 11, 0.1);
+
+  --text-primary: #001f3f;
+  /* Dark Blue Text */
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+
+  --border-color: rgba(0, 31, 63, 0.1);
+  --border-hover: rgba(184, 134, 11, 0.3);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.15);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* =============================================
+   Global Styles
+   ============================================= */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: all 0.3s ease;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+
+.app-layout {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  overflow-x: hidden;
+  position: relative;
+
+  // Sidebar container state handling
+  .sidebar-container {
+    width: 280px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &--collapsed {
+      width: 80px;
+    }
+
+    // Mobile States
+    @media (max-width: 768px) {
+      width: 280px !important;
+      left: 0;
+      right: auto;
+      transform: translateX(-100%);
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      border-left: none;
+      visibility: visible;
+
+      &.open {
+        transform: translateX(0);
+        box-shadow: 25px 0 60px rgba(0, 0, 0, 0.6); // Shadow on the right
+      }
+    }
+  }
+
+  .mobile-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    animation: fadeIn 0.4s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  .content-wrapper {
+    flex: 1;
+    min-width: 0; // Crucial: prevents content from expanding flex parent
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-left: 280px; // Use padding instead of margin
+    transition: padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    .app-layout--collapsed & {
+      padding-left: 80px;
+    }
+
+    @media (max-width: 768px) {
+      padding-left: 0;
+
+      .app-layout--collapsed & {
+        padding-left: 0;
+      }
+    }
+  }
+
+  .header-container {
+    height: 70px;
+    flex-shrink: 0;
+    background: var(--navbar-bg);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 900;
+    position: sticky;
+    top: 0;
+  }
+
+  .main-content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 30px;
+    position: relative;
+    width: 100%;
+    min-height: 0;
+
+    @media (max-width: 768px) {
+      padding: 0 20px;
+    }
+
+    @media (max-width: 500px) {
+      padding: 0 12px;
+    }
+  }
+}
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--accent-secondary);
+    text-decoration: underline;
+  }
+}
+
+button {
+  cursor: pointer;
+  border-radius: 8px;
+  @include font-style(16px, 600, 1.4);
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-secondary);
+}

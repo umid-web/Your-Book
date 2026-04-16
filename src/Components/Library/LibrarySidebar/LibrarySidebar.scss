@@ -1,0 +1,483 @@
+@use '../../../Variables.scss' as *;
+@use '../../../Mixin.scss' as *;
+
+.library-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 340px;
+    flex-shrink: 0;
+
+    @media (max-width: 1200px) {
+        width: 320px;
+        gap: 18px;
+    }
+
+    @media (max-width: 1024px) {
+        width: 100%;
+        gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+        gap: 14px;
+    }
+
+    @media (max-width: 480px) {
+        gap: 12px;
+    }
+}
+
+.ls-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+    @media (max-width: 600px) {
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 16px;
+        border-radius: 12px;
+    }
+}
+
+.ls-card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 16px;
+
+    @media (max-width: 600px) {
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+}
+
+/* 1. BALANCE CARD */
+.ls-balance-card {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2), var(--card-bg));
+    border-color: rgba(139, 92, 246, 0.4);
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+.ls-balance-icon {
+    font-size: 32px;
+
+    @media (max-width: 600px) {
+        font-size: 28px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 24px;
+    }
+}
+
+.ls-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.ls-amount {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0;
+
+    @media (max-width: 600px) {
+        font-size: 22px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 20px;
+    }
+
+    span {
+        font-size: 14px;
+        color: #a78bfa;
+        font-weight: 600;
+
+        @media (max-width: 600px) {
+            font-size: 13px;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 12px;
+        }
+    }
+}
+
+/* 2. HOW IT WORKS */
+.ls-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @media (max-width: 600px) {
+        gap: 10px;
+    }
+
+    @media (max-width: 480px) {
+        gap: 8px;
+    }
+
+    li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        @media (max-width: 600px) {
+            gap: 10px;
+        }
+
+        @media (max-width: 480px) {
+            gap: 8px;
+        }
+
+        .ls-step-num {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+
+            @media (max-width: 600px) {
+                width: 22px;
+                height: 22px;
+                font-size: 11px;
+            }
+
+            @media (max-width: 480px) {
+                width: 20px;
+                height: 20px;
+                font-size: 10px;
+            }
+        }
+
+        p {
+            margin: 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+
+            @media (max-width: 600px) {
+                font-size: 12px;
+            }
+
+            @media (max-width: 480px) {
+                font-size: 11px;
+            }
+        }
+    }
+}
+
+/* 3. CATEGORIES */
+.ls-cat-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    @media (max-width: 600px) {
+        gap: 6px;
+    }
+
+    @media (max-width: 480px) {
+        gap: 4px;
+    }
+}
+
+.ls-cat-pill {
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    font-size: 12px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s;
+
+    @media (max-width: 600px) {
+        padding: 5px 12px;
+        font-size: 11px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 4px 10px;
+        font-size: 10px;
+    }
+
+    &:hover {
+        background: rgba(59, 130, 246, 0.15);
+        color: var(--text-primary);
+        border-color: rgba(59, 130, 246, 0.3);
+    }
+}
+
+/* 4. STATISTICS */
+.ls-stat-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+
+    @media (max-width: 600px) {
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: 480px) {
+        gap: 8px;
+        margin-bottom: 8px;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.ls-stat-icon {
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+
+    @media (max-width: 600px) {
+        font-size: 18px;
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 16px;
+        width: 28px;
+        height: 28px;
+        border-radius: 4px;
+    }
+}
+
+.ls-stat-texts {
+    display: flex;
+    flex-direction: column;
+}
+
+.ls-st-val {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+
+    @media (max-width: 600px) {
+        font-size: 14px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 13px;
+    }
+}
+
+.ls-st-lbl {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    margin: 0;
+
+    @media (max-width: 600px) {
+        font-size: 10px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 9px;
+    }
+}
+
+/* 5. READING CARD */
+.ls-reading-card {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), var(--card-bg));
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.ls-rc-top {
+    margin-bottom: 16px;
+
+    @media (max-width: 600px) {
+        margin-bottom: 12px;
+    }
+
+    @media (max-width: 480px) {
+        margin-bottom: 10px;
+    }
+}
+
+.ls-rc-badge {
+    background: #10b981;
+    color: var(--text-on-accent);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    @media (max-width: 600px) {
+        font-size: 9px;
+        padding: 3px 8px;
+        border-radius: 5px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 8px;
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+}
+
+.ls-rc-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+
+    @media (max-width: 600px) {
+        gap: 14px;
+        margin-bottom: 12px;
+    }
+
+    @media (max-width: 480px) {
+        gap: 12px;
+        margin-bottom: 10px;
+    }
+}
+
+.ls-rc-cover {
+    font-size: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    width: 60px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 600px) {
+        font-size: 36px;
+        width: 54px;
+        height: 72px;
+        border-radius: 6px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 32px;
+        width: 48px;
+        height: 64px;
+        border-radius: 4px;
+    }
+}
+
+.ls-rc-info {
+    .ls-rc-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0 0 6px;
+
+        @media (max-width: 600px) {
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+    }
+
+    .ls-rc-author {
+        font-size: 12px;
+        color: var(--text-secondary);
+        margin: 0;
+
+        @media (max-width: 600px) {
+            font-size: 11px;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 10px;
+        }
+    }
+}
+
+.ls-rc-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    @media (max-width: 600px) {
+        gap: 10px;
+    }
+
+    @media (max-width: 480px) {
+        gap: 8px;
+    }
+}
+
+.ls-rc-bar {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 99px;
+    overflow: hidden;
+
+    @media (max-width: 600px) {
+        height: 5px;
+    }
+
+    @media (max-width: 480px) {
+        height: 4px;
+    }
+}
+
+.ls-rc-fill {
+    height: 100%;
+    background: #10b981;
+    border-radius: 99px;
+}
+
+.ls-rc-pct {
+    font-size: 11px;
+    color: #10b981;
+    font-weight: 600;
+
+    @media (max-width: 600px) {
+        font-size: 10px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 9px;
+    }
+}

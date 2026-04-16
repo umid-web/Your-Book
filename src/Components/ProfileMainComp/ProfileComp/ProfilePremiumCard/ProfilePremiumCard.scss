@@ -1,0 +1,113 @@
+@use '../../../../Variables.scss' as *;
+
+.premium-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+  border: 1px solid var(--accent-primary);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(255, 215, 0, 0.15), transparent 70%);
+    z-index: 1;
+  }
+
+  &:hover {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+    transform: translateY(-8px);
+    border-color: var(--accent-secondary);
+  }
+
+  @media (max-width: $screen-sm) {
+    padding: 1.25rem;
+  }
+}
+
+.pc-blur {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 150px;
+  height: 150px;
+  background: var(--accent-primary);
+  filter: blur(50px);
+  border-radius: 50%;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pc-content {
+  position: relative;
+  z-index: 10;
+}
+
+.pc-icon {
+  color: var(--accent-primary);
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+.pc-title {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.01em;
+}
+
+.pc-desc {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.5;
+}
+
+.pc-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.pcf-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+
+  .pcf-bullet {
+    width: 6px;
+    height: 6px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent-primary);
+  }
+}
+
+.pc-btn {
+  width: 100%;
+  background: var(--accent-primary);
+  border: none;
+  color: var(--text-on-accent);
+  font-weight: 800;
+  padding: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background: var(--bg-tertiary);
+    transform: scale(1.02);
+    box-shadow: 0 15px 25px rgba(255, 215, 0, 0.3);
+  }
+}

@@ -1,0 +1,198 @@
+@use '../../../Mixin.scss' as *;
+@use '../../../Variables.scss' as *;
+
+.premium-ad-banner {
+    position: relative;
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 32px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.1);
+
+    @media (max-width: 600px) {
+        padding: 24px;
+        border-radius: 20px;
+        margin-bottom: 32px;
+    }
+
+    @media (max-width: 380px) {
+        padding: 18px;
+        border-radius: 16px;
+    }
+    animation: bannerFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.15), transparent 60%);
+        pointer-events: none;
+    }
+
+    &::after {
+        content: '👑';
+        position: absolute;
+        right: 20px;
+        bottom: -20px;
+        font-size: 140px;
+        opacity: 0.05;
+        transform: rotate(-15deg);
+        pointer-events: none;
+    }
+
+    .ad-content {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        width: 100%;
+        z-index: 2;
+
+        @media (max-width: 1200px) {
+            gap: 20px;
+        }
+
+        @media (max-width: 1100px) {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+        }
+    }
+
+    .ad-icon-wrap {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        border-radius: 20px;
+        display: grid;
+        place-items: center;
+        font-size: 32px;
+        box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        flex-shrink: 0;
+        animation: crownPulse 3s infinite ease-in-out;
+
+        @media (max-width: 1100px) {
+            width: 60px;
+            height: 60px;
+            font-size: 28px;
+        }
+
+        @media (max-width: 480px) {
+            width: 52px;
+            height: 52px;
+            font-size: 24px;
+            border-radius: 14px;
+        }
+
+        @media (max-width: 360px) {
+            width: 44px;
+            height: 44px;
+            font-size: 20px;
+        }
+    }
+
+    .ad-text-container {
+        flex: 1;
+
+        .ad-title {
+            @include font-style(24px, 800, 1.2);
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+
+            @media (max-width: 1100px) { font-size: 22px; }
+            @media (max-width: 480px) { font-size: 20px; }
+        }
+
+        .ad-desc {
+            @include font-style(16px, 500, 1.5);
+            color: var(--text-secondary);
+            max-width: 600px;
+
+            .highlight {
+                color: var(--accent-primary);
+                font-weight: 700;
+            }
+
+            @media (max-width: 1200px) { max-width: 100%; font-size: 15px; }
+            @media (max-width: 480px) { font-size: 14px; }
+        }
+    }
+
+    .ad-actions {
+        flex-shrink: 0;
+
+        @media (max-width: 1100px) { width: 100%; }
+    }
+
+    .ad-link {
+        background: linear-gradient(to right, var(--accent-secondary), var(--accent-primary));
+        color: var(--text-on-accent);
+        border: none;
+        padding: 12px 32px;
+        border-radius: 14px;
+        @include font-style(15px, 800, 1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 8px 20px var(--accent-shadow);
+
+        &:hover {
+            transform: translateY(-3px);
+            background: var(--accent-secondary);
+            box-shadow: 0 12px 28px var(--accent-shadow);
+        }
+
+        @media (max-width: 1100px) {
+            width: 100%;
+            justify-content: center;
+            padding: 14px 32px;
+            max-width: 300px;
+        }
+        
+        @media (max-width: 500px) {
+            max-width: 100%;
+        }
+    }
+
+    .ad-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 32px;
+        height: 32px;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-color);
+        border-radius: 50%;
+        color: var(--text-muted);
+        font-size: 14px;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        transition: all 0.3s ease;
+        z-index: 10;
+
+        &:hover {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border-color: rgba(239, 68, 68, 0.2);
+            transform: rotate(90deg);
+        }
+    }
+}
+
+@keyframes crownPulse {
+    0%, 100% { transform: scale(1); filter: brightness(1); }
+    50% { transform: scale(1.05); filter: brightness(1.2); }
+}
+
+@keyframes bannerFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

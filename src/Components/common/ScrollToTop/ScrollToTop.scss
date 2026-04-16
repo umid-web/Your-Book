@@ -1,0 +1,63 @@
+@use '../../../Mixin.scss' as *;
+@use '../../../Variables.scss' as *;
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    button {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        color: var(--accent-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(8px);
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: var(--accent-primary);
+            color: var(--text-on-accent);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px var(--accent-shadow);
+        }
+
+        &:active {
+            transform: scale(0.95);
+        }
+
+        svg {
+            transition: transform 0.3s ease;
+        }
+
+        &:hover svg {
+            transform: translateY(-2px);
+        }
+    }
+
+    @media (max-width: 768px) {
+        bottom: 20px;
+        right: 20px;
+
+        button {
+            width: 42px;
+            height: 42px;
+        }
+    }
+}

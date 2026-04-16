@@ -1,0 +1,481 @@
+@use '../../../Variables.scss' as *;
+
+// ─────────────────────────────────────────────────────────────
+//  YOUBOOK WALLET CARD
+// ─────────────────────────────────────────────────────────────
+.ybw-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: 32px;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  border: 1px solid var(--border-hover);
+  margin-bottom: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 32px 72px rgba(37, 99, 235, 0.35);
+  }
+
+  @media (max-width: $screen-lg) {
+    padding: 24px;
+  }
+}
+
+// ── Blur circles ────────────────────────────────────────────
+.ybw-blur {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+
+  &.ybw-blur-1 {
+    top: 0;
+    right: 0;
+    width: 260px;
+    height: 260px;
+    background: rgba(168, 85, 247, 0.35);
+    transform: translate(25%, -25%);
+
+    @media (max-width: $screen-lg) {
+      width: 160px;
+      height: 160px;
+    }
+  }
+
+  &.ybw-blur-2 {
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background: rgba(59, 130, 246, 0.25);
+    transform: translate(-25%, 25%);
+
+    @media (max-width: $screen-lg) {
+      width: 130px;
+      height: 130px;
+    }
+  }
+}
+
+// ── Coin image ───────────────────────────────────────────────
+.ybw-coin-img {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  opacity: 0.12;
+  transform: rotate(12deg);
+  pointer-events: none;
+  user-select: none;
+
+  @media (max-width: $screen-lg) {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+// ── Pattern overlay ──────────────────────────────────────────
+.ybw-pattern {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+// ── Content ─────────────────────────────────────────────────
+.ybw-content {
+  position: relative;
+  z-index: 10;
+}
+
+// ─────────────────────────────────────────────────────────────
+//  1. HEADER
+// ─────────────────────────────────────────────────────────────
+.ybw-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+
+  @media (max-width: $screen-sm) {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.ybw-left {
+  display: flex;
+  flex-direction: column;
+}
+
+// Premium badge
+.ybw-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 4px 14px;
+  border-radius: 9999px;
+  margin-bottom: 12px;
+  width: fit-content;
+  color: var(--text-primary);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.crown-yellow {
+  color: var(--accent-primary);
+}
+
+.ybw-main-title {
+  color: var(--text-primary);
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  line-height: 1.1;
+
+  @media (max-width: $screen-lg) {
+    font-size: 24px;
+  }
+}
+
+.ybw-subtitle {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 16px;
+  margin: 0;
+
+  @media (max-width: $screen-lg) {
+    font-size: 14px;
+  }
+}
+
+// Coin icon circle
+.ybw-coin-wrap {
+  width: 76px;
+  height: 76px;
+  background: var(--bg-tertiary);
+  backdrop-filter: blur(8px);
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  animation: ybw-pulse 2.5s ease-in-out infinite;
+
+  @media (max-width: $screen-lg) {
+    width: 62px;
+    height: 62px;
+  }
+}
+
+@keyframes ybw-pulse {
+  0%, 100% { box-shadow: 0 0 0 0  var(--accent-shadow); }
+  50%       { box-shadow: 0 0 0 12px rgba(212, 175, 55, 0);  }
+}
+
+.ybw-coin-icon {
+  color: var(--text-primary);
+}
+
+// ─────────────────────────────────────────────────────────────
+//  2. BALANCE
+// ─────────────────────────────────────────────────────────────
+.ybw-balance-block {
+  margin-bottom: 24px;
+}
+
+.ybw-bal-label {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  margin: 0 0 8px 0;
+}
+
+.ybw-bal-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.ybw-bal-num {
+  color: var(--text-primary);
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 1;
+
+  @media (max-width: $screen-lg) {
+    font-size: 44px;
+  }
+  @media (max-width: $screen-sm) {
+    font-size: 38px;
+  }
+}
+
+.ybw-bal-unit {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.ybw-usd {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  font-weight: 500;
+  margin: 8px 0 0 0;
+}
+
+// ─────────────────────────────────────────────────────────────
+//  3. FEATURES
+// ─────────────────────────────────────────────────────────────
+.ybw-features {
+  background: var(--bg-tertiary);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+
+.ybw-feat-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+}
+
+.ybw-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ybw-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: default;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+//  4. QUICK STATS
+// ─────────────────────────────────────────────────────────────
+.ybw-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+
+  @media (max-width: $screen-xs) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ybw-stat {
+  background: var(--bg-tertiary);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 16px 10px;
+  text-align: center;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.16);
+  }
+}
+
+.ybw-stat-ic {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 auto 8px auto;
+  display: block;
+}
+
+.ybw-stat-val {
+  color: var(--text-primary);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 4px;
+
+  @media (max-width: $screen-lg) {
+    font-size: 18px;
+  }
+}
+
+.ybw-stat-lbl {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+// ─────────────────────────────────────────────────────────────
+//  5. ACTION BUTTONS
+// ─────────────────────────────────────────────────────────────
+.ybw-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 0;
+}
+
+.ybw-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 18px;
+  background: var(--bg-tertiary);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.28);
+    transform: scale(1.04);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+  }
+
+  @media (max-width: $screen-lg) {
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+//  6. RECENT ACTIVITY
+// ─────────────────────────────────────────────────────────────
+.ybw-activity {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.ybw-act-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.ybw-act-title {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ybw-act-more {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover { color: var(--text-primary); }
+}
+
+.ybw-act-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.ybw-act-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  &:last-child { border-bottom: none; }
+}
+
+.ybw-act-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.ybw-act-ic {
+  width: 34px;
+  height: 34px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.72);
+  flex-shrink: 0;
+}
+
+.ybw-act-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ybw-act-name {
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 2px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ybw-act-time {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 12px;
+  margin: 0;
+}
+
+.ybw-act-amount {
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  margin-left: 8px;
+
+  &.pos { color: #86efac; } // green-300
+  &.neg { color: #fca5a5; } // red-300
+}

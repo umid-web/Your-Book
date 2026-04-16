@@ -1,0 +1,294 @@
+@use '../../Mixin.scss' as *;
+@use '../../Variables.scss' as *;
+
+.premium-settings-v2 {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  padding: 40px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 600px) {
+    padding: 24px 16px;
+  }
+}
+
+// Persuasive Header
+.ps-onboarding-header {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+
+  .ps-back-circle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background: var(--bg-tertiary);
+      transform: translateX(-4px);
+    }
+    
+    @media (max-width: 768px) { position: relative; margin-bottom: 24px; left: auto; }
+  }
+
+  .ps-crown-glow {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.2), transparent 70%);
+    display: grid;
+    place-items: center;
+    margin: 0 auto 24px;
+    
+    .crown-icon {
+      color: var(--accent-primary);
+      filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5));
+      animation: float 3s infinite ease-in-out;
+    }
+  }
+
+  .ps-promo-title {
+    @include font-style(42px, 900, 1.1);
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    letter-spacing: -0.03em;
+    @media (max-width: 600px) { font-size: 32px; }
+  }
+
+  .ps-promo-subtitle {
+    @include font-style(18px, 500, 1.5);
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+    @media (max-width: 600px) { font-size: 15px; }
+  }
+}
+
+// Pricing Grid
+.ps-pricing-section {
+  margin-bottom: 60px;
+
+  .ps-section-label {
+    @include font-style(14px, 800, 1);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+}
+
+.ps-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+
+  @media (max-width: 1024px) { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 500px) { grid-template-columns: 1fr; }
+}
+
+.ps-plan-card {
+  position: relative;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  &.popular {
+    background: linear-gradient(180deg, rgba(212, 175, 55, 0.05) 0%, var(--bg-secondary) 100%);
+    border-color: var(--accent-primary);
+    scale: 1.05;
+    z-index: 2;
+    @media (max-width: 1024px) { scale: 1; }
+  }
+
+  .popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-primary);
+    color: var(--text-on-accent);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1px;
+  }
+
+  .discount-pill {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--success);
+    color: var(--text-primary);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 800;
+  }
+
+  .plan-header {
+    .duration {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+  }
+
+  .plan-price {
+    .amount {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--text-primary);
+    }
+    .unit {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent-primary);
+      margin-left: 4px;
+    }
+  }
+
+  .plan-meta {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .plan-select-btn {
+    margin-top: auto;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 14px;
+    border-radius: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background: var(--accent-primary);
+      color: var(--text-on-accent);
+      border-color: var(--accent-primary);
+    }
+  }
+
+  &.popular .plan-select-btn {
+    background: var(--accent-primary);
+    color: var(--text-on-accent);
+    border-color: var(--accent-primary);
+    
+    &:hover { background: var(--bg-tertiary); }
+  }
+}
+
+// Features List
+.ps-features-section {
+  margin-bottom: 60px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .ps-section-label {
+    text-align: center;
+    margin-bottom: 32px;
+    color: var(--text-muted);
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 800;
+  }
+}
+
+.ps-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ps-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  transition: all 0.3s;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .ps-feature-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--accent-primary);
+    display: grid;
+    place-items: center;
+  }
+
+  .ps-feature-text {
+    flex: 1;
+    .feat-title { font-size: 16px; font-weight: 800; color: var(--text-primary); margin-bottom: 2px; }
+    .feat-desc { font-size: 13px; color: var(--text-secondary); }
+  }
+
+  .check-icon {
+    color: var(--success);
+    opacity: 0.5;
+  }
+}
+
+// Footer
+.ps-info-footer {
+  max-width: 800px;
+  margin: 0 auto;
+  
+  .footer-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px;
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.05), transparent);
+    border-radius: 24px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+
+    .gift-icon { color: var(--accent-primary); }
+    .text-content { 
+      font-size: 14px; 
+      color: var(--text-secondary); 
+      line-height: 1.6;
+      strong { color: var(--accent-primary); }
+    }
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}

@@ -1,0 +1,192 @@
+@use '../../../Mixin.scss' as *;
+@use '../../../Variables.scss' as *;
+
+.quick-actions {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 24px;
+
+    @media (max-width: 1200px) {
+        padding: 20px;
+    }
+
+    @media (max-width: 992px) {
+        padding: 18px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 16px;
+        border-radius: 20px;
+    }
+
+    @media (max-width: 600px) {
+        padding: 14px;
+        border-radius: 16px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    .section-header {
+        margin-bottom: 20px;
+
+        @media (max-width: 768px) {
+            margin-bottom: 16px;
+        }
+
+        @media (max-width: 600px) {
+            margin-bottom: 14px;
+        }
+
+        @media (max-width: 480px) {
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            @include font-style(20px, 600, 1);
+            color: var(--text-primary);
+
+            @media (max-width: 768px) {
+                @include font-style(18px, 600, 1);
+            }
+
+            @media (max-width: 600px) {
+                @include font-style(16px, 600, 1);
+            }
+
+            @media (max-width: 480px) {
+                @include font-style(14px, 600, 1);
+            }
+        }
+    }
+
+    .actions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-bottom: 24px;
+
+        @media (max-width: 1200px) {
+            gap: 14px;
+        }
+
+        @media (max-width: 992px) {
+            gap: 12px;
+        }
+
+        @media (max-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        @media (max-width: 600px) {
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+
+        @media (max-width: 480px) {
+            grid-template-columns: 1fr;
+            gap: 6px;
+        }
+
+        .action-card {
+            background: var(--accent-hover);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            &:hover {
+                border-color: var(--accent-primary);
+                transform: translateY(-5px);
+                background: var(--card-bg);
+            }
+
+            .action-icon {
+                font-size: 32px;
+                margin-bottom: 12px;
+            }
+
+            .action-content {
+                h3 {
+                    @include font-style(14px, 600, 1.2);
+                    color: var(--text-primary);
+                    margin-bottom: 4px;
+                }
+
+                p {
+                    @include font-style(12px, 400, 1.2);
+                    color: var(--text-secondary);
+                    margin-bottom: 8px;
+                }
+
+                .action-reward,
+                .action-badge {
+                    @include font-style(11px, 600, 1);
+                    color: var(--accent-primary);
+                    padding: 4px 8px;
+                    background: var(--accent-hover);
+                    border-radius: 20px;
+                }
+            }
+        }
+    }
+
+    .premium-teaser {
+        background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(212, 175, 55, 0.1));
+        border: 1px solid var(--accent-primary);
+        border-radius: 20px;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+
+        .teaser-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            .teaser-icon {
+                font-size: 24px;
+            }
+
+            .teaser-text {
+                h4 {
+                    @include font-style(14px, 700, 1);
+                    color: var(--text-primary);
+                    margin-bottom: 2px;
+                }
+
+                p {
+                    @include font-style(11px, 400, 1);
+                    color: var(--text-secondary);
+                }
+            }
+        }
+
+        .upgrade-btn {
+            padding: 8px 16px;
+            background: var(--accent-primary);
+            color: var(--text-on-accent);
+            border: none;
+            border-radius: 20px;
+            @include font-style(12px, 600, 1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                transform: scale(1.05);
+                box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            }
+        }
+    }
+}

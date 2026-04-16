@@ -1,0 +1,325 @@
+@use '../../../../Variables.scss' as *;
+
+.profile-header {
+  position: relative;
+  width: 100%;
+  margin-bottom: 2rem;
+  border-radius: 2.5rem;
+  background: var(--bg-secondary);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+    z-index: 2;
+  }
+}
+
+.ph-glow-1, .ph-glow-2 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: 0;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.ph-glow-1 { top: -150px; left: -150px; background: var(--info); animation: ph-pulse 10s infinite alternate; }
+.ph-glow-2 { bottom: -150px; right: -100px; background: var(--warning); animation: ph-pulse 8s infinite alternate-reverse; }
+
+@keyframes ph-pulse {
+  0% { transform: scale(1); opacity: 0.15; }
+  100% { transform: scale(1.2); opacity: 0.25; }
+}
+
+.ph-glass-card {
+  position: relative;
+  z-index: 1;
+  background: var(--card-bg);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  padding: 3rem;
+  border-radius: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+
+  @media (max-width: 768px) { padding: 2rem; }
+}
+
+.ph-master-edit {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 10;
+  
+  &:hover {
+    background: var(--info);
+    border-color: var(--accent-primary);
+    transform: translateY(-4px) rotate(8deg);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+  }
+
+  @media (max-width: 576px) {
+    top: 1rem;
+    right: 1rem;
+    width: 38px;
+    height: 38px;
+  }
+}
+
+.ph-grid {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  grid-template-rows: auto auto;
+  gap: 2rem 3rem;
+  align-items: start;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    text-align: center;
+    justify-items: center;
+    gap: 2rem;
+  }
+}
+
+// Avatar Section
+.ph-avatar-sect {
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+
+  @media (max-width: 1100px) {
+    grid-row: span 1;
+  }
+
+  .ph-avatar-wrapper {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    padding: 6px;
+    background: linear-gradient(135deg, var(--border-color), rgba(255,255,255,0.05));
+    position: relative;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; background: var(--bg-tertiary); }
+    
+    .ph-avatar-placeholder {
+      font-size: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      background: var(--bg-tertiary);
+      border-radius: 50%;
+    }
+
+    .ph-avatar-edit-hint {
+      position: absolute;
+      inset: 6px;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      opacity: 0;
+      transition: 0.3s;
+      border-radius: 50%;
+      backdrop-filter: blur(4px);
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      .ph-avatar-edit-hint { opacity: 1; }
+    }
+  }
+
+  .ph-premium-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1.2rem;
+    background: linear-gradient(135deg, var(--warning), var(--accent-primary), var(--accent-secondary));
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--text-on-accent);
+    text-transform: uppercase;
+    box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2);
+  }
+}
+
+// Info Section
+.ph-info-sect {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0;
+  width: 100%;
+
+  .ph-full-name {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    background: linear-gradient(to bottom, var(--text-primary), var(--text-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    word-break: break-word;
+
+    @media (max-width: 576px) { font-size: 1.8rem; }
+  }
+
+  .ph-user-bio {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .ph-contact-grid {
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+
+    @media (max-width: 768px) { flex-direction: column; }
+
+    .ph-contact-box {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      border-radius: 1.25rem;
+      flex: 1;
+      min-width: 0;
+
+      svg { color: var(--info); width: 20px; flex-shrink: 0; }
+
+      .ph-contact-val {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        label { font-size: 0.7rem; text-transform: uppercase; color: var(--text-muted); font-weight: 800; }
+        span { font-size: 0.95rem; color: var(--text-primary); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      }
+    }
+  }
+}
+
+// Progress Section
+.ph-progress-sect {
+  background: var(--bg-tertiary);
+  padding: 2rem;
+  border-radius: 2rem;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+
+  .ph-prog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .ph-prog-title { display: flex; align-items: center; gap: 0.75rem; color: var(--text-primary); font-weight: 700; svg { color: var(--warning); } }
+    .ph-prog-percent { font-size: 1.5rem; font-weight: 900; color: var(--warning); }
+  }
+
+  .ph-prog-rail {
+    height: 12px;
+    background: var(--bg-primary);
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+    .ph-prog-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--info), #8b5cf6, #ec4899);
+      border-radius: 1rem;
+      transition: width 1s ease;
+      .ph-prog-shimmer {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        animation: ph-shimmer 2s infinite;
+      }
+    }
+  }
+
+  .ph-prog-stats {
+    display: flex;
+    justify-content: space-between;
+    .ph-p-stat {
+      display: flex;
+      flex-direction: column;
+      label { font-size: 0.7rem; color: var(--text-muted); font-weight: 800; text-transform: uppercase; }
+      span { font-size: 1.1rem; color: var(--text-primary); font-weight: 800; }
+    }
+  }
+}
+
+@keyframes ph-shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+
+@media (max-width: 576px) {
+  .profile-header { border-radius: 1.5rem; margin-bottom: 1.5rem; }
+  .ph-glass-card { padding: 1.5rem; border-radius: 1.5rem; }
+  .ph-full-name { font-size: 1.8rem; }
+}
+
+@media (max-width: 500px) {
+  .ph-glass-card { padding: 1.25rem; }
+  .ph-avatar-wrapper { width: 120px; height: 120px; }
+  .ph-avatar-sect { gap: 1rem; }
+  .ph-info-sect { 
+    gap: 1.25rem;
+    .ph-full-name { font-size: 22px; text-align: center; width: 100%; }
+    .ph-user-bio { font-size: 13px; text-align: center; width: 100%; }
+  }
+  .ph-contact-grid {
+    flex-direction: column;
+    gap: 10px !important;
+    .ph-contact-box {
+      padding: 0.75rem 1rem;
+      border-radius: 1rem;
+      .ph-contact-val span { font-size: 0.85rem; }
+    }
+  }
+  .ph-progress-sect {
+    padding: 1.25rem;
+    border-radius: 1.25rem;
+    .ph-prog-header .ph-prog-percent { font-size: 1.25rem; }
+    .ph-prog-stats .ph-p-stat span { font-size: 0.95rem; }
+  }
+}

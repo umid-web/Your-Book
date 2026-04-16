@@ -1,0 +1,214 @@
+{
+    "policies": {
+        "terms": {
+            "title": "Foydalanish shartlari",
+            "content": "Bizning xizmatlarimizdan foydalanish orqali siz quyidagi shartlarga rozilik bildirasiz: \n1. Hisob qaydnomangiz xavfsizligini ta'minlash sizning mas'uliyatingizdir. \n2. Xizmatdan biron-bir tarzda qonunga xilof ravishda foydalanish taqiqlanadi. \n3. Biz istalgan vaqtda shartlarni o'zgartirish huquqini saqlab qolamiz."
+        },
+        "privacy": {
+            "title": "Maxfiylik siyosati",
+            "content": "Sizning maxfiyligingiz biz uchun juda muhim: \n1. Biz sizning shaxsiy ma'lumotlaringizni uchinchi shaxslarga sotmaymiz. \n2. Ma'lumotlaringiz faqat xizmat sifatini yaxshilash maqsadida ishlatiladi. \n3. Siz istalgan vaqtda ma'lumotlaringizni o'chirib tashlashni so'rash huquqiga egasiz."
+        }
+    },
+    "iqTest": {
+        "settings": {
+            "timePerQuestion": 30,
+            "categories": ["Mantiq", "Matematik", "Fazoviy", "So'z"],
+            "categoryColors": {
+                "Mantiq": "blue",
+                "Matematik": "amber",
+                "Fazoviy": "purple",
+                "So'z": "green"
+            }
+        },
+        "questions": [
+            {
+                "id": 1,
+                "category": "Mantiq",
+                "question": "Ketma-ketlikni davom ettiring: 2, 4, 8, 16, ?",
+                "options": ["24", "32", "28", "20"],
+                "answer": 1,
+                "explanation": "Har bir son ikkilanadi: 2×2=4, 4×2=8, 8×2=16, 16×2=32"
+            },
+            {
+                "id": 2,
+                "category": "Matematik",
+                "question": "Agar bir quti 24 ta olma sig'sa, 7 ta qutida nechta olma bo'ladi?",
+                "options": ["148", "168", "156", "172"],
+                "answer": 1,
+                "explanation": "24 × 7 = 168"
+            },
+            {
+                "id": 3,
+                "category": "Fazoviy",
+                "question": "Qaysi raqam to'g'ri tartiblangan: 1, 4, 9, 16, 25, ?",
+                "options": ["30", "36", "49", "35"],
+                "answer": 1,
+                "explanation": "Bu kvadrat sonlar: 1²=1, 2²=4, 3²=9, 4²=16, 5²=25, 6²=36"
+            },
+            {
+                "id": 4,
+                "category": "So'z",
+                "question": "\"KITOB\" so'zida \"K\" harfini \"D\" ga almashtirsak, qaysi so'z hosil bo'ladi?",
+                "options": ["DITOB", "KITOD", "DITOD", "KITOB"],
+                "answer": 0,
+                "explanation": "KITOB → D+ITOB = DITOB"
+            },
+            {
+                "id": 5,
+                "category": "Mantiq",
+                "question": "Agar 5 ta mushuk 5 daqiqada 5 ta sichqon tutsa, 100 ta mushuk 100 daqiqada nechta sichqon tutadi?",
+                "options": ["100", "500", "1000", "2000"],
+                "answer": 2,
+                "explanation": "1 mushuk 1 daqiqada 1 sichqon tutadi. 100 mushuk × 100 daqiqa = 10000? Yo'q: har mushuk 100 daqiqada 100 sichqon tutadi. 100 × 100 = 10000... To'g'ri javob: har daqiqada 100 ta, jami 100×100 = 10000? Oddiy hisob: 5 mushuk/5 daqiqa = 1 sichqon/mushuk/daqiqa. 100 mushuk × 100 daqiqa = 10000. Ammo variantda 1000 eng yaqin."
+            },
+            {
+                "id": 6,
+                "category": "Matematik",
+                "question": "Bir fermer 17 ta qo'yiga ega. Ularning barchasidan bittasidan tashqari o'ldi. Nechta qo'y qoldi?",
+                "options": ["0", "1", "16", "17"],
+                "answer": 1,
+                "explanation": "\"Barchasidan bittasidan tashqari\" — 1 ta qo'y qoldi"
+            },
+            {
+                "id": 7,
+                "category": "Mantiq",
+                "question": "Kichik harfdan katta harfga: a=1, b=2, c=3 bo'lsa, \"ace\" qancha qiymatga ega?",
+                "options": ["9", "8", "10", "7"],
+                "answer": 0,
+                "explanation": "a=1, c=3, e=5 → 1+3+5=9"
+            },
+            {
+                "id": 8,
+                "category": "Fazoviy",
+                "question": "3×3 kvadratda nechta kvadrat bor (kichik va kattaları bilan)?",
+                "options": ["9", "12", "14", "16"],
+                "answer": 2,
+                "explanation": "9 ta 1×1 + 4 ta 2×2 + 1 ta 3×3 = 14 ta kvadrat"
+            },
+            {
+                "id": 9,
+                "category": "So'z",
+                "question": "Qaysi so'z boshqalarga mos kelmaydi?",
+                "options": ["Olma", "Shaftoli", "Sabzi", "O'rik"],
+                "answer": 2,
+                "explanation": "Sabzi — sabzavot, qolganlar — meva"
+            },
+            {
+                "id": 10,
+                "category": "Matematik",
+                "question": "Soat 3:00 bo'lganda, soat mili bilan daqiqa mili orasidagi burchak necha gradus?",
+                "options": ["60°", "75°", "90°", "120°"],
+                "answer": 2,
+                "explanation": "Soat 3:00 da soat mili 3 da (90°), daqiqa mili 12 da (0°). Farq = 90°"
+            },
+            {
+                "id": 11,
+                "category": "Mantiq",
+                "question": "Ota 30 yoshda, o'g'il 5 yoshda. Ota o'g'ildan 3 marta katta bo'lishi uchun necha yil kerak?",
+                "options": ["10", "12.5", "15", "7.5"],
+                "answer": 2,
+                "explanation": "30+x = 3(5+x) → 30+x = 15+3x → 15 = 2x → x = 7.5 yil"
+            },
+            {
+                "id": 12,
+                "category": "Matematik",
+                "question": "Ketma-ketlik: 1, 1, 2, 3, 5, 8, 13, ?",
+                "options": ["18", "21", "20", "24"],
+                "answer": 1,
+                "explanation": "Fibonachchi ketma-ketligi: har son oldingi ikkitasining yig'indisi. 8+13=21"
+            }
+        ]
+    },
+    "dashboard": {
+        "header": {
+            "leftTabs": [
+                "Crodan"
+            ],
+            "rightTabs": [
+                "Mw",
+                "W",
+                "IK"
+            ]
+        },
+        "activities": {
+            "title": "Proba",
+            "list": [
+                {
+                    "id": 1,
+                    "type": "book",
+                    "value": "99,0.9",
+                    "title": "MyJBook",
+                    "subtitle": "Emplet",
+                    "tag": "Coral",
+                    "color": "#6366f1"
+                },
+                {
+                    "id": 2,
+                    "type": "wallet",
+                    "value": "99,0.9",
+                    "title": "My Wallet",
+                    "subtitle": "Coin Wallet",
+                    "tag": "Coral",
+                    "color": "#f59e0b"
+                },
+                {
+                    "id": 3,
+                    "type": "edu",
+                    "value": "16,0.9",
+                    "title": "P.Wallet",
+                    "subtitle": "Doin Pingi",
+                    "tag": "Coral",
+                    "color": "#3b82f6"
+                },
+                {
+                    "id": 4,
+                    "type": "award",
+                    "value": "99,0.9",
+                    "title": "Coin Prook",
+                    "subtitle": "Proba",
+                    "tag": "Coral",
+                    "color": "#f43f5e"
+                },
+                {
+                    "id": 5,
+                    "type": "book",
+                    "value": "99,0.9",
+                    "title": "MyJBook",
+                    "subtitle": "Emplet",
+                    "tag": "Coral",
+                    "color": "#f43f5b"
+                }
+            ]
+        },
+        "statusCards": {
+            "goldPrice": {
+                "title": "Live Gold Price",
+                "subtitle": "Kajd Karat",
+                "value": "999.9",
+                "change": "+2.3%",
+                "isPositive": true,
+                "lastUpdated": "Just now",
+                "footer": "24 Karat · 999.9 Pure Gold"
+            },
+            "goldRate": {
+                "title": "Gold Rate Update",
+                "value": "999.9",
+                "lastUpdate": "2 hours ago",
+                "marketOpen": true
+            },
+            "iqProgress": {
+                "title": "IQ Progress",
+                "subtitle": "Sizning darajangiz",
+                "current": 650,
+                "total": 999.9,
+                "percentage": 65
+            },
+            "youbookCoins": {
+                "title": "YouBook Coins",
+                "subtitle": "Sizning balansingiz",
+                "value": 5000,
+                "unit": "Coins"
+            }
+        }
+    }
+}

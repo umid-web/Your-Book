@@ -1,0 +1,917 @@
+@use '../../Variables.scss' as *;
+@use '../../Mixin.scss' as *;
+
+// ────────────────────────────────────────────
+//  Accent shorthand colours (fixed, accent only)
+// ────────────────────────────────────────────
+$amber-400:  #fbbf24;
+$amber-500:  #f59e0b;
+$blue-400:   #60a5fa;
+$purple-400: #c084fc;
+$green-400:  #4ade80;
+$red-400:    #f87171;
+
+// ────────────────────────────────────────────
+//  CONTAINER
+// ────────────────────────────────────────────
+.vault-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px;
+  padding-bottom: 80px;
+
+  @media (max-width: $screen-lg) {
+    padding: 16px;
+    padding-bottom: 80px;
+  }
+}
+
+// ────────────────────────────────────────────
+//  MOBILE HEADER
+// ────────────────────────────────────────────
+.vault-mobile-header {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+
+  @media (max-width: $screen-lg) {
+    display: flex;
+  }
+
+  .vmh-title {
+    color: $text-primary;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .vmh-sub {
+    color: $text-secondary;
+    font-size: 14px;
+    margin: 4px 0 0 0;
+  }
+
+  .vmh-settings-btn {
+    padding: 8px;
+    background: $bg-secondary;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    color: $text-secondary;
+    cursor: pointer;
+    transition: all $transition-normal;
+
+    &:hover {
+      border-color: $border-hover;
+    }
+  }
+}
+
+// ────────────────────────────────────────────
+//  STATS OVERVIEW (3 cards)
+// ────────────────────────────────────────────
+.vault-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+
+  @media (max-width: $screen-md) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.vs-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid transparent;
+
+  &.vs-amber {
+    background-color: $card-bg;
+    background-image: linear-gradient(135deg, rgba(120, 53, 15, 0.3), rgba(146, 64, 14, 0.2));
+    border-color: rgba(245, 158, 11, 0.3);
+  }
+  &.vs-blue {
+    background-color: $card-bg;
+    background-image: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(30, 64, 175, 0.2));
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+  &.vs-purple {
+    background-color: $card-bg;
+    background-image: linear-gradient(135deg, rgba(88, 28, 135, 0.3), rgba(107, 33, 168, 0.2));
+    border-color: rgba(168, 85, 247, 0.3);
+  }
+}
+
+.vs-blur {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 128px;
+  height: 128px;
+  background: rgba(255, 255, 255, 0.08);
+  filter: blur(48px);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.vs-body {
+  position: relative;
+  z-index: 1;
+}
+
+.vs-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $text-secondary;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.vs-val {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 4px;
+
+  &.text-amber  { color: var(--accent-primary); }
+  &.text-blue   { color: var(--info); }
+  &.text-purple { color: var(--accent-secondary); }
+}
+
+.vs-lbl {
+  color: $text-secondary;
+  font-size: 14px;
+}
+
+// icon colours reused across vault
+.icon-amber  { color: var(--accent-primary); }
+.icon-blue   { color: var(--info); }
+.icon-purple { color: var(--accent-secondary); }
+
+// ────────────────────────────────────────────
+//  MAIN CONTENT GRID
+// ────────────────────────────────────────────
+.vault-main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+
+  @media (max-width: $screen-lg) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.vault-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.vault-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+// ────────────────────────────────────────────
+//  YOUBOOK COIN WALLET  (blue → purple gradient)
+// ────────────────────────────────────────────
+.yb-wallet {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.ybw-deco {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 160px;
+  height: 160px;
+  background: rgba(255, 255, 255, 0.1);
+  filter: blur(48px);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ybw-content {
+  position: relative;
+  z-index: 1;
+}
+
+.ybw-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.ybw-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  margin: 0 0 4px 0;
+}
+
+.ybw-title {
+  color: var(--text-primary);
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.ybw-coin-icon {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.ybw-balance {
+  color: var(--text-primary);
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.ybw-tags-card {
+  background: var(--bg-tertiary);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.ybw-tags-lbl {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  margin: 0 0 8px 0;
+}
+
+.ybw-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ybw-tag {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+}
+
+// ────────────────────────────────────────────
+//  GOLD WALLETS SECTION
+// ────────────────────────────────────────────
+.gw-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.gw-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.gw-title {
+  color: $text-primary;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.gw-subtitle {
+  color: $text-secondary;
+  font-size: 14px;
+  margin: 0;
+}
+
+// Filter tabs
+.gw-filters {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: $bg-secondary;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.gw-filter-btn {
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: $text-secondary;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &.active {
+    background: $bg-tertiary;
+    color: $text-primary;
+  }
+
+  &:hover:not(.active) {
+    color: $text-primary;
+  }
+}
+
+// ────────────────────────────────────────────
+//  WALLET CARDS
+// ────────────────────────────────────────────
+.gw-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+
+  @media (max-width: $screen-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gw-card {
+  position: relative;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid transparent;
+  transition: all $transition-normal;
+
+  &.unlocked {
+    background-color: $card-bg;
+    background-image: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(31, 41, 55, 0.8));
+    border-color: $border-color;
+    cursor: pointer;
+
+    &:hover {
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+  }
+
+  &.locked {
+    background-color: var(--bg-primary);
+    background-image: linear-gradient(135deg, rgba(10, 20, 40, 0.5), rgba(0, 0, 0, 0.3));
+    border-color: var(--border-color);
+    cursor: not-allowed;
+  }
+
+  &.selected {
+    background-color: $card-bg;
+    background-image: linear-gradient(135deg, rgba(120, 53, 15, 0.4), rgba(146, 64, 14, 0.3));
+    border-color: rgba(245, 158, 11, 0.5);
+  }
+}
+
+// Lock overlay
+.gw-lock-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 20, 40, 0.7);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  z-index: 2;
+  color: var(--accent-primary);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  transition: all 0.3s ease;
+
+  svg {
+    filter: drop-shadow(0 0 10px var(--accent-shadow));
+    margin-bottom: 8px;
+  }
+
+  &::after {
+    content: 'LOCKED';
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+  }
+}
+
+.gw-card-inner {
+  &.dimmed {
+    opacity: 0.4;
+  }
+}
+
+.gw-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.gw-wallet-num {
+  color: $text-secondary;
+  font-size: 12px;
+  margin: 0 0 4px 0;
+}
+
+.gw-karat {
+  color: $amber-500;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+// Gold bar chip
+.gw-gold-bar {
+  width: 64px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
+  box-shadow: 0 4px 12px var(--accent-shadow);
+
+  span {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-on-accent);
+    letter-spacing: 1px;
+  }
+
+  &.bar-locked {
+    background: var(--bg-primary);
+    box-shadow: none;
+    border: 1px solid var(--border-color);
+
+    span { color: var(--text-muted); }
+  }
+}
+
+.gw-amount-section {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.gw-amount {
+  color: $text-primary;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.gw-amount-lbl {
+  color: $text-secondary;
+  font-size: 14px;
+}
+
+// Action buttons
+.gw-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.gw-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &.btn-cashout {
+    background: var(--accent-hover);
+    border: 1px solid var(--accent-primary);
+    color: var(--accent-primary);
+
+    &:hover {
+      background: var(--accent-primary);
+      color: var(--text-on-accent);
+    }
+  }
+
+  &.btn-shop {
+    background: $bg-secondary;
+    border: 1px solid $border-color;
+    color: $text-secondary;
+
+    &:hover {
+      background: $bg-tertiary;
+      color: $text-primary;
+    }
+  }
+}
+
+// ────────────────────────────────────────────
+//  RIGHT COLUMN CARDS
+// ────────────────────────────────────────────
+.vr-card {
+  background: $card-bg;
+  border: 1px solid $border-color;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+// Gold Price
+.vr-price-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: $text-secondary;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.vr-price-val {
+  color: $amber-500;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.vr-price-lbl {
+  color: $text-secondary;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.vr-price-badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--success-bg);
+  border: 1px solid var(--success);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: var(--success);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+// Transactions
+.vr-tx-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+
+  h3 {
+    color: $text-primary;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  svg {
+    color: $text-secondary;
+  }
+}
+
+.vr-tx-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.vr-tx-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid $border-color;
+
+  &:last-child { border-bottom: none; }
+}
+
+.vr-tx-type {
+  color: $text-primary;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 2px 0;
+}
+
+.vr-tx-time {
+  color: $text-muted;
+  font-size: 12px;
+  margin: 0;
+}
+
+.vr-tx-right {
+  text-align: right;
+}
+
+.vr-tx-amount {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+
+  &.positive { color: var(--success); }
+  &.negative { color: var(--error); }
+}
+
+.vr-tx-karat {
+  color: $text-muted;
+  font-size: 12px;
+}
+
+// Selected wallet info
+.selected-wallet-card {
+  background-color: $card-bg;
+  background-image: linear-gradient(135deg, rgba(120, 53, 15, 0.3), rgba(146, 64, 14, 0.2));
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.sw-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.sw-header-txt {
+  color: $amber-400;
+  font-weight: 700;
+}
+
+.sw-title {
+  color: $text-primary;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.sw-id {
+  color: $text-secondary;
+  font-size: 14px;
+  margin: 0 0 16px 0;
+}
+
+.sw-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.sw-row {
+  display: flex;
+  justify-content: space-between;
+
+  span:first-child { color: var(--text-secondary); }
+
+  .text-white  { color: var(--text-primary); font-weight: 500; }
+  .text-green  { color: var(--success);    font-weight: 500; }
+  .text-amber  { color: var(--accent-primary);    font-weight: 500; }
+}
+
+// Info tip
+.vr-info-tip {
+  background-color: $card-bg;
+  background-image: linear-gradient(135deg, rgba(30, 58, 138, 0.2), rgba(88, 28, 135, 0.2));
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.tip-title {
+  color: $text-primary;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+
+.tip-desc {
+  color: $text-secondary;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+// ────────────────────────────────────────────
+//  MODALS
+// ────────────────────────────────────────────
+.v-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.v-modal-card {
+  background: $bg-secondary;
+  border: 1px solid $border-color;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+}
+
+.v-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: $text-secondary;
+  cursor: pointer;
+  z-index: 10;
+  &:hover { color: var(--text-primary); }
+}
+
+.v-m-step {
+  padding: 32px;
+}
+
+.v-m-title {
+  color: var(--text-primary);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.v-m-desc {
+  color: $text-secondary;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.v-m-summary {
+  background: $bg-tertiary;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+
+  .v-m-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: $text-secondary;
+  }
+
+  .v-m-total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+    font-weight: 700;
+    color: var(--accent-primary);
+    font-size: 16px;
+  }
+}
+
+.v-card-input {
+  margin-bottom: 24px;
+  label { display: block; font-size: 12px; color: $text-muted; margin-bottom: 8px; text-transform: uppercase; }
+  .v-c-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: $bg-tertiary;
+    border: 1px solid $border-color;
+    padding: 12px 16px;
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+}
+
+.v-m-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--accent-primary);
+  color: var(--text-on-accent);
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover { opacity: 0.9; transform: translateY(-2px); }
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  &-confirm { background: var(--success); color: var(--text-on-accent); margin-bottom: 12px; &:hover { opacity: 0.9; } }
+  &-cancel { background: transparent; border: 1px solid var(--border-color); color: var(--text-secondary); &:hover { background: var(--bg-tertiary); border-color: var(--border-hover); } }
+}
+
+.v-m-warn {
+  display: flex;
+  gap: 16px;
+  background: rgba($red-400, 0.1);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba($red-400, 0.2);
+  margin-bottom: 24px;
+  color: $red-400;
+  p { font-size: 13px; margin: 0; line-height: 1.5; }
+}
+
+.v-m-success {
+    text-align: center;
+    .v-m-success-ic {
+        color: $green-400;
+        margin-bottom: 20px;
+        animation: v-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+}
+
+@keyframes v-pop {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+// ────────────────────────────────────────────
+//  NOTIFICATIONS & MISC
+// ────────────────────────────────────────────
+.v-notify {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background: #1a1a20;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-primary);
+  font-size: 14px;
+  z-index: 3000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+
+  &.success { border-color: $green-400; }
+  &.error { border-color: $red-400; }
+  &.info { border-color: $blue-400; }
+}
+
+.vr-exchange-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba($amber-500, 0.1);
+    border: 1px solid rgba($amber-500, 0.3);
+    border-radius: 8px;
+    color: $amber-400;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    &:hover { background: rgba($amber-500, 0.2); transform: scale(1.05); }
+}
+
+.v-exchange-card {
+    padding: 32px;
+}
+
+.v-ex-grid {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    
+    .v-ex-box {
+        flex: 1;
+        background: $bg-tertiary;
+        padding: 12px;
+        border-radius: 12px;
+        text-align: center;
+        .l { font-size: 10px; color: $text-muted; text-transform: uppercase; margin-bottom: 4px; }
+        .v { font-weight: 700; color: var(--text-primary); }
+    }
+    
+    .v-ex-arrow { color: $amber-500; opacity: 0.5; }
+}
+
+.lock-req {
+    margin-top: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-primary);
+    background: rgba(0,0,0,0.5);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+

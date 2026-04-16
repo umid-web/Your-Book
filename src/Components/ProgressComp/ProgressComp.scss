@@ -1,0 +1,270 @@
+@use '../../Mixin.scss' as *;
+@use '../../Variables.scss' as *;
+
+// =============================
+// ProgressComp Styles
+// =============================
+
+.progress-page {
+    padding: 100px 32px 64px;
+    min-height: 100vh;
+    animation: fadeInUp 0.7s ease-out;
+
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+        text-align: center;
+
+        h1 {
+            @include font-style(clamp(32px, 5vw, 51px), 800, 1.2);
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        >p {
+            @include font-style(18px, 400, 1.6);
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+    }
+}
+
+// ---- Stats overview ----
+.progress-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-bottom: 48px;
+}
+
+.progress-stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 28px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+
+    &:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-primary);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .stat-icon {
+        font-size: 32px;
+        margin-bottom: 12px;
+        display: block;
+    }
+
+    .stat-value {
+        @include font-style(35px, 800, 1);
+        color: var(--accent-primary);
+        margin-bottom: 8px;
+    }
+
+    .stat-label {
+        @include font-style(13px, 700, 1.4);
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+}
+
+// ---- Progress bar items ----
+.progress-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+    margin-bottom: 48px;
+}
+
+.progress-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px 24px;
+    transition: all 0.3s ease;
+
+    &:hover {
+        border-color: var(--accent-primary);
+        background: var(--accent-hover);
+    }
+
+    .item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+
+        .item-title {
+            @include font-style(16px, 600, 1.4);
+            color: var(--text-primary);
+        }
+
+        .item-percent {
+            @include font-style(14px, 700, 1.4);
+            color: var(--accent-primary);
+        }
+    }
+
+    .bar-track {
+        height: 8px;
+        background: var(--bg-tertiary);
+        border-radius: 99px;
+        overflow: hidden;
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 99px;
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    }
+}
+
+// ---- History / activity list ----
+.activity-section {
+    text-align: left;
+
+    h2 {
+        @include font-style(24, 700, 1.3);
+        color: var(--text-primary);
+        margin-bottom: 24px;
+    }
+
+    .activity-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .activity-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 14px;
+        padding: 16px 20px;
+        transition: all 0.25s ease;
+
+        &:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-primary);
+        }
+
+        .activity-icon {
+            font-size: 24px;
+            width: 44px;
+            height: 44px;
+            background: var(--accent-hover);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--accent-primary);
+        }
+
+        .activity-info {
+            flex: 1;
+
+            .activity-title {
+                @include font-style(15px, 600, 1.4);
+                color: var(--text-primary);
+                margin-bottom: 2px;
+            }
+
+            .activity-date {
+                @include font-style(13px, 400, 1.4);
+                color: var(--text-muted);
+            }
+        }
+
+        .activity-score {
+            @include font-style(16px, 700, 1.4);
+            color: var(--accent-primary);
+        }
+    }
+}
+
+// ---- Placeholder ----
+.placeholder-content {
+    margin-top: 32px;
+    padding: 64px 48px;
+    background: var(--card-bg);
+    border: 1px dashed var(--border-color);
+    border-radius: 20px;
+    color: var(--text-muted);
+    @include font-style(17px, 400, 1.6);
+
+    .placeholder-icon {
+        font-size: 64px;
+        margin-bottom: 24px;
+        display: block;
+    }
+}
+
+// ---- Loading ----
+.progress-loading {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+
+    .spinner {
+        width: 48px;
+        height: 48px;
+        border: 4px solid var(--accent-hover);
+        border-top-color: var(--accent-primary);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+    }
+
+    p {
+        @include font-style(16px, 600, 1.4);
+        color: var(--accent-primary);
+    }
+}
+
+// ---- Animations ----
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// ---- Responsive ----
+@media (max-width: 768px) {
+    .progress-page {
+        padding: 40px 16px 48px;
+    }
+
+    .progress-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .progress-item {
+        padding: 16px;
+    }
+}

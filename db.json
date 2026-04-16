@@ -1,0 +1,144 @@
+{
+  "sections": [
+    { "id": 1, "karat": 375, "state": "done", "progress": 100 },
+    { "id": 2, "karat": 416, "state": "done", "progress": 100 },
+    { "id": 3, "karat": 500, "state": "active", "progress": 45 },
+    { "id": 4, "karat": 583, "state": "open", "progress": 0 },
+    { "id": 5, "karat": 585, "state": "locked", "progress": 0 },
+    { "id": 6, "karat": 750, "state": "locked", "progress": 0 },
+    { "id": 7, "karat": 833, "state": "locked", "progress": 0 },
+    { "id": 8, "karat": 875, "state": "locked", "progress": 0 },
+    { "id": 9, "karat": 916, "state": "locked", "progress": 0 },
+    { "id": 10, "karat": 958, "state": "locked", "progress": 0 },
+    { "id": 11, "karat": 990, "state": "locked", "progress": 0 },
+    { "id": 12, "karat": 999, "state": "locked", "progress": 0 },
+    { "id": 13, "karat": "999.5", "state": "locked", "progress": 0 },
+    { "id": 14, "karat": "999.9", "state": "locked", "progress": 0 },
+    { "id": 15, "karat": "999.9K", "state": "locked", "progress": 0 },
+    { "id": 16, "karat": "MAX", "state": "locked", "progress": 0 }
+  ],
+  "goldWallets": [
+    { "id": 1, "karat": 375, "balance": 0, "status": "unlocked" },
+    { "id": 2, "karat": 416, "balance": 12.5, "status": "unlocked" },
+    { "id": 3, "karat": 500, "balance": 0, "status": "unlocked" }
+  ],
+  "vaultStats": {
+    "totalGoldValue": 1234.5,
+    "activeWallets": 1,
+    "totalWallets": 16,
+    "youbookCoins": 5000,
+    "currentGoldPrice": 999.9,
+    "priceChange": 2.5
+  },
+  "books": [
+    { "id": 1, "title": "JavaScript Asoslari", "author": "John Doe", "sectionId": 1, "cover": "📙", "price": 29.99, "rating": 4.5 },
+    { "id": 2, "title": "React Complete Guide", "author": "Jane Smith", "sectionId": 2, "cover": "📗",   "price": 39.99, "rating": 4.8 },
+    { "id": 3, "title": "Node.js Mastery", "author": "Alice Brown", "sectionId": 3, "cover": "📘", "price": 49.99, "rating": 4.7 }
+  ],
+  "stats": {
+    "totalCoins": 15000,
+    "todayCoins": 450,
+    "readingStreak": 7,
+    "completedBooks": 12,
+    "totalQuestions": 75,
+    "correctAnswers": 62,
+    "accuracy": 83,
+    "totalBooks": 150,
+    "completedSections": 2,
+    "currentProgress": 45,
+    "readingTime": "124h",
+    "iqLevel": 650
+  },
+  "iqTest": {
+    "settings": {
+      "timePerQuestion": 30,
+      "categories": ["Mantiq", "Matematik", "Fazoviy", "So'z"],
+      "categoryColors": {
+        "Mantiq": "blue", "Matematik": "amber", "Fazoviy": "purple", "So'z": "green"
+      }
+    },
+    "questions": [
+      { "id": 1, "category": "Mantiq", "question": "Ketma-ketlikni davom ettiring: 2, 4, 8, 16, ?", "options": ["24", "32", "28", "20"], "answer": 1, "explanation": "..." }
+    ]
+  },
+  "coinWallet": {
+    "balance": 15000,
+    "transactions": [
+      { "id": 1, "type": "Kitob sotib olindi", "amount": -500, "time": "2 soat oldin", "category": "expense", "icon": "BookOpen" }
+    ],
+    "earnMethods": [
+      { "icon": "BookOpen", "title": "Kitob o'qish", "desc": "Har bob uchun +10 coin", "reward": "+10", "color": "blue" }
+    ],
+    "spendOptions": [
+      { "icon": "BookOpen", "title": "Kitoblar", "desc": "100–2000 coin", "color": "blue" }
+    ],
+    "stats": {
+      "totalEarned": 25550, "totalSpent": 10550, "weekly": 1800, "today": 350, "streakBonus": "x2.5"
+    }
+  },
+  "userProfile": {
+    "id": "USR-2024-001",
+    "name": "Umidjon",
+    "email": "umidjon@example.com",
+    "phone": "+998 90 123 45 67",
+    "joinDate": "15.02.2024",
+    "lastSeen": "Bugun",
+    "status": "Faol",
+    "isPremium": true,
+    "iqLevel": 650,
+    "maxIQ": 999.9,
+    "achievements": [
+      { "name": "Birinchi Kitob", "desc": "Birinchi kitobni tugatdingiz", "emoji": "📚", "unlocked": true, "date": "2 kun oldin", "progress": 100 }
+    ],
+    "activities": [
+      { "action": "Kitob sotib olindi", "title": "1984", "time": "2 soat oldin", "color": "bg-blue-400" }
+    ],
+    "stats": { "gold": 16, "coins": 15000, "xp": 1250, "level": 5 }
+  },
+  "dashboard": {
+    "header": {
+      "leftTabs": [{ "id": "overview", "label": "Shaxsiy Sahifa", "active": true }],
+      "rightTabs": [{ "id": "settings", "icon": "Settings" }]
+    },
+    "statusCards": {
+      "goldPrice": { "title": "Gold Price", "subtitle": "per gram", "value": "99.9", "change": "+2.5%", "isPositive": true, "footer": "Last Update", "lastUpdated": "2m ago" },
+      "goldRate": { "title": "Gold Rate", "subtitle": "Market Rate", "value": "x2.5", "change": "+0.1", "isPositive": true, "footer": "Current Trend" },
+      "iqProgress": { "title": "IQ Progress", "subtitle": "Weekly", "value": "650", "change": "+15", "isPositive": true, "footer": "Level 5" },
+      "youbookCoins": { "title": "Coins", "subtitle": "Balance", "value": "5000", "change": "+450", "isPositive": true, "footer": "Today" }
+    },
+    "activities": {
+      "title": "So'nggi harakatlar",
+      "list": [
+        { "id": 1, "type": "book", "color": "#3B82F6", "value": "1984", "title": "Kitob sotib olindi", "subtitle": "George Orwell", "tag": "Completed" },
+        { "id": 2, "type": "wallet", "color": "#F59E0B", "value": "500", "title": "Hamyon to'ldirildi", "subtitle": "Gold Purchase", "tag": "Success" }
+      ]
+    }
+  },
+  "libraryStats": {
+    "totalBooks": 1247,
+    "sections": 16,
+    "openSections": 8,
+    "reading": 3
+  },
+  "categories": [
+    { "id": 1, "name": "Klassik" },
+    { "id": 2, "name": "Zamonaviy" },
+    { "id": 3, "name": "Ilmiy" },
+    { "id": 4, "name": "Badiiy" },
+    { "id": 5, "name": "Tarixiy" }
+  ],
+  "currentReading": {
+    "id": "1-1",
+    "title": "1984",
+    "author": "George Orwell",
+    "cover": "📘",
+    "section": 1,
+    "karat": 375,
+    "progress": 65
+  },
+  "userStats": {
+    "booksRead": 12,
+    "coinsSpent": 1850,
+    "hoursSpent": 48
+  }
+}

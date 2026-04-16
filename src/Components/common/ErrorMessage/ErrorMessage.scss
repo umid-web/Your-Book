@@ -1,0 +1,196 @@
+@use '../../../Variables.scss' as v;
+
+.error-message {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: v.$spacing-md v.$spacing-lg;
+  border-radius: v.$radius-md;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: v.$spacing-sm 0;
+  animation: slideDown v.$transition-normal;
+  background: v.$card-bg;
+  border: 1px solid v.$border-color;
+  color: v.$text-primary;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+
+  .message-content {
+    display: flex;
+    align-items: flex-start;
+    gap: v.$spacing-md;
+    flex: 1;
+  }
+
+  .message-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .message-text {
+    flex: 1;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .dismiss-btn {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    padding: v.$spacing-xs;
+    cursor: pointer;
+    border-radius: v.$radius-sm;
+    transition: all v.$transition-normal;
+    margin-left: v.$spacing-md;
+    color: v.$text-secondary;
+
+    &:hover {
+      background: v.$accent-hover;
+      color: v.$accent-primary;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  // Variant styles
+  &.error {
+    border-color: v.$error;
+    color: v.$error;
+
+    .message-icon {
+      color: v.$error;
+    }
+
+    .dismiss-btn:hover {
+      background: rgba(239, 68, 68, 0.1);
+      color: v.$error;
+    }
+  }
+
+  &.warning {
+    border-color: v.$warning;
+    color: v.$warning;
+
+    .message-icon {
+      color: v.$warning;
+    }
+
+    .dismiss-btn:hover {
+      background: rgba(245, 158, 11, 0.1);
+      color: v.$warning;
+    }
+  }
+
+  &.info {
+    border-color: v.$info;
+    color: v.$info;
+
+    .message-icon {
+      color: v.$info;
+    }
+
+    .dismiss-btn:hover {
+      background: rgba(59, 130, 246, 0.1);
+      color: v.$info;
+    }
+  }
+
+  &.success {
+    border-color: v.$success;
+    color: v.$success;
+
+    .message-icon {
+      color: v.$success;
+    }
+
+    .dismiss-btn:hover {
+      background: rgba(16, 185, 129, 0.1);
+      color: v.$success;
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Compact variant
+.error-message.compact {
+  padding: v.$spacing-sm v.$spacing-md;
+  font-size: 0.875rem;
+
+  .message-content {
+    gap: v.$spacing-sm;
+  }
+
+  .message-icon {
+    width: 16px;
+    height: 16px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+// Full width variant
+.error-message.full-width {
+  width: 100%;
+  margin: 0;
+}
+
+// Theme-aware adjustments (using existing Variables.scss tokens)
+[data-theme="light"] .error-message {
+  &.error {
+    background: rgba(239, 68, 68, 0.05);
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+
+  &.warning {
+    background: rgba(245, 158, 11, 0.05);
+    border-color: rgba(245, 158, 11, 0.2);
+  }
+
+  &.info {
+    background: rgba(59, 130, 246, 0.05);
+    border-color: rgba(59, 130, 246, 0.2);
+  }
+
+  &.success {
+    background: rgba(16, 185, 129, 0.05);
+    border-color: rgba(16, 185, 129, 0.2);
+  }
+}
+
+[data-theme="dark"] .error-message {
+  &.error {
+    background: v.$error-bg;
+    border-color: v.$error;
+  }
+
+  &.warning {
+    background: rgba(245, 158, 11, 0.1);
+    border-color: v.$warning;
+  }
+
+  &.info {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: v.$info;
+  }
+
+  &.success {
+    background: v.$success-bg;
+    border-color: v.$success;
+  }
+}
