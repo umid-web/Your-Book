@@ -16,32 +16,18 @@ const ScrollToTop = () => {
     };
 
     const scrollToTop = () => {
+        // 1. Try scrolling the main dashboard container
         const mainContent = document.querySelector('.main-content');
-        
-        const scroll = (element) => {
-            if (!element) return;
-            
-            const position = element === window ? window.pageYOffset : element.scrollTop;
-            
-            if (position > 0) {
-                // Fixed speed with easing for better performance
-                const step = Math.max(position / 12, 10); 
-                
-                if (element === window) {
-                    window.scrollTo(0, position - step);
-                } else {
-                    element.scrollTop = position - step;
-                }
-                
-                requestAnimationFrame(() => scroll(element));
-            }
-        };
+        if (mainContent && mainContent.scrollTop > 0) {
+            mainContent.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
 
-        scroll(mainContent || window);
+        // 2. Fallback: Scroll the entire window (for Landing/Login pages)
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     useEffect(() => {
-        // Keep it visible
         setIsVisible(true);
     }, []);
 
