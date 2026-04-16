@@ -32,7 +32,7 @@ import ProfileAccountInfo from './ProfileComp/ProfileAccountInfo/ProfileAccountI
 import ProfileDangerZone from './ProfileComp/ProfileDangerZone/ProfileDangerZone';
 import ProfileEditModal from './ProfileComp/ProfileEditModal/ProfileEditModal';
 
-import { ToastContainer } from '../Common/Toast/Toast';
+import { ToastContainer } from '../common/Toast/Toast';
 
 const ProfileMainComp = () => {
   const { user: authUser, logout } = useAuth();
