@@ -128,9 +128,9 @@ body {
 .app-layout {
   display: flex;
   width: 100%;
-  min-height: 100vh;
+  height: 100dvh; /* Use dynamic viewport height for mobile browsers */
   background-color: var(--bg-primary);
-  overflow-x: hidden;
+  overflow: hidden; /* Prevents body scrolling */
   position: relative;
 
   // Sidebar container state handling
@@ -191,7 +191,7 @@ body {
     min-width: 0; // Crucial: prevents content from expanding flex parent
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100%;
     padding-left: 280px; // Use padding instead of margin
     transition: padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
