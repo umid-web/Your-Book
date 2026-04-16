@@ -31,7 +31,7 @@ import ProtectedRoute from '../Components/ProtectedRoute/ProtectedRoute'
 import Navbar from '../Main/Navbar/Navbar'
 import Header from '../Main/Header/Header'
 import WalletFillModal from '../Components/WalletFill/WalletFillModal'
-import ScrollToTop from '../Components/Common/ScrollToTop/ScrollToTop'
+import ScrollToTop from '../Components/common/ScrollToTop/ScrollToTop'
 import './App.scss'
 
 const AppContent = () => {
