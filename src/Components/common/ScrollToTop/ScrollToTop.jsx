@@ -38,7 +38,7 @@ const ScrollToTop = () => {
     }, []);
 
     return (
-        <div className={`scroll-to-top visible`} onClick={scrollToTop}>
+        <div className={`scroll-to-top ${isVisible ? 'visible' : ''}`} onClick={scrollToTop}>
             <button aria-label="Scroll to top">
                 <svg
                     width="24"
