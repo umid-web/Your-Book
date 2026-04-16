@@ -6,8 +6,24 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
-    padding: 10px 0;
+    padding: 15px 0;
     gap: 16px;
+    
+    // Sticky behavior
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-primary); // Fallback
+    background: var(--navbar-bg); // Pulls from theme variables transparently
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    
+    // Stretch edge-to-edge relative to internal container padding
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0 0 16px 16px;
 
     @media (max-width: 768px) {
         flex-direction: column;
