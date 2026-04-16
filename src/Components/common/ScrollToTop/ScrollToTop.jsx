@@ -16,6 +16,7 @@ const ScrollToTop = () => {
     };
 
     const scrollToTop = () => {
+        // Scroll the main container
         const mainContent = document.querySelector('.main-content');
         if (mainContent) {
             mainContent.scrollTo({
@@ -23,18 +24,16 @@ const ScrollToTop = () => {
                 behavior: 'smooth',
             });
         }
+        // Also scroll the window just in case
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     };
 
     useEffect(() => {
-        const mainContent = document.querySelector('.main-content');
-        if (mainContent) {
-            mainContent.addEventListener('scroll', toggleVisibility);
-        }
-        return () => {
-            if (mainContent) {
-                mainContent.removeEventListener('scroll', toggleVisibility);
-            }
-        };
+        // Keep it visible
+        setIsVisible(true);
     }, []);
 
     return (
