@@ -78,8 +78,6 @@ const Register = () => {
       newErrors.password = "Parol maydoni to'ldirilishi shart"
     } else if (formData.password.length < 8) {
       newErrors.password = "Parol kamida 8 ta belgidan iborat bo'lishi kerak"
-    } else if (passwordStrength < 3) {
-      newErrors.password = 'Parol juda zaif. Kuchliroq parol tanlang.'
     }
 
     if (!formData.confirmPassword) {
