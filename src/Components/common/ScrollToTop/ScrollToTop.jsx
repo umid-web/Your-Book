@@ -16,19 +16,28 @@ const ScrollToTop = () => {
     };
 
     const scrollToTop = () => {
-        // Scroll the main container
         const mainContent = document.querySelector('.main-content');
-        if (mainContent) {
-            mainContent.scrollTo({
-                top: 0,
-                behavior: 'smooth',
-            });
+        
+        const scrollElement = (element) => {
+            if (!element) return;
+            const currentScroll = element.scrollTop || window.pageYOffset;
+            if (currentScroll > 0) {
+                // Scroll in small chunks for a smoother, slower effect
+                const scrollStep = currentScroll / 15; 
+                if (element === window) {
+                    window.scrollBy(0, -scrollStep);
+                } else {
+                    element.scrollTop = currentScroll - scrollStep;
+                }
+                requestAnimationFrame(() => scrollElement(element));
+            }
+        };
+
+        if (mainContent && mainContent.scrollTop > 0) {
+            scrollElement(mainContent);
+        } else {
+            scrollElement(window);
         }
-        // Also scroll the window just in case
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
     };
 
     useEffect(() => {
