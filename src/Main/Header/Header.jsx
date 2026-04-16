@@ -1,8 +1,13 @@
 import React, { useMemo } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './Header.scss'
 
 const Icons = {
+    ChevronLeft: () => (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M15 18l-6-6 6-6" />
+        </svg>
+    ),
     Search: () => (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="11" cy="11" r="8" />
@@ -25,6 +30,9 @@ const Icons = {
 
 const Header = ({ onMenuClick, notificationCount = 0 }) => {
     const location = useLocation();
+    const navigate = useNavigate();
+
+    const isDashboard = location.pathname === '/dashboard' || location.pathname === '/';
 
     const pageTitle = useMemo(() => {
         const path = location.pathname.split('/')[1];
@@ -37,10 +45,20 @@ const Header = ({ onMenuClick, notificationCount = 0 }) => {
             <div className="header-mobile-glass" />
 
             <div className="header-left">
-                <div className="header-branding">
-                    <div className="logo-icon">👑</div>
-                    <span className="brand-name">YouBook</span>
-                </div>
+                {!isDashboard ? (
+                    <button 
+                        className="header-back-btn" 
+                        onClick={() => navigate(-1)}
+                        title="Ortga qaytish"
+                    >
+                        <Icons.ChevronLeft />
+                    </button>
+                ) : (
+                    <div className="header-branding">
+                        <div className="logo-icon">👑</div>
+                        <span className="brand-name">YouBook</span>
+                    </div>
+                )}
 
                 <div className="header-desktop-info">
                     <span className="current-page-indicator">{pageTitle}</span>
