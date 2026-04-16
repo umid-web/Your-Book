@@ -18,26 +18,26 @@ const ScrollToTop = () => {
     const scrollToTop = () => {
         const mainContent = document.querySelector('.main-content');
         
-        const scrollElement = (element) => {
+        const scroll = (element) => {
             if (!element) return;
-            const currentScroll = element.scrollTop || window.pageYOffset;
-            if (currentScroll > 0) {
-                // Scroll in small chunks for a smoother, slower effect
-                const scrollStep = currentScroll / 15; 
+            
+            const position = element === window ? window.pageYOffset : element.scrollTop;
+            
+            if (position > 0) {
+                // Fixed speed with easing for better performance
+                const step = Math.max(position / 12, 10); 
+                
                 if (element === window) {
-                    window.scrollBy(0, -scrollStep);
+                    window.scrollTo(0, position - step);
                 } else {
-                    element.scrollTop = currentScroll - scrollStep;
+                    element.scrollTop = position - step;
                 }
-                requestAnimationFrame(() => scrollElement(element));
+                
+                requestAnimationFrame(() => scroll(element));
             }
         };
 
-        if (mainContent && mainContent.scrollTop > 0) {
-            scrollElement(mainContent);
-        } else {
-            scrollElement(window);
-        }
+        scroll(mainContent || window);
     };
 
     useEffect(() => {
