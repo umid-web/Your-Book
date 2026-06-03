@@ -14,7 +14,7 @@ const KitoblarSections = () => {
 
     const fetchSections = async () => {
         try {
-            const response = await fetch('http://localhost:3000/sections');
+            const response = await fetch('/sections');
             const data = await response.json();
             setSections(data);
         } catch (error) {

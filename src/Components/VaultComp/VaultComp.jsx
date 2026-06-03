@@ -27,7 +27,7 @@ const VaultComp = () => {
     const [wallets, setWallets] = useState(defaultWallets);
     const [selectedWallet, setSelectedWallet] = useState(null);
     const [activeFilter, setActiveFilter] = useState('all');
-    const [youBookCoins, setYouBookCoins] = useState(12500);
+    const [voykeIQCoins, setVoykeIQCoins] = useState(12500);
     const [isCashoutModalOpen, setIsCashoutModalOpen] = useState(false);
     const [isExchangeModalOpen, setIsExchangeModalOpen] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
@@ -79,7 +79,7 @@ const VaultComp = () => {
     const handleExchange = () => {
         setIsProcessing(true);
         setTimeout(() => {
-            setYouBookCoins(prev => prev + 1000);
+            setVoykeIQCoins(prev => prev + 1000);
             setIsProcessing(false);
             setIsExchangeModalOpen(false);
             showNotify("1,000 Coin muvaffaqiyatli xarid qilindi!");
@@ -129,15 +129,15 @@ const VaultComp = () => {
                     </div>
                 </div>
 
-                {/* Card 3 – YouBook Coins */}
+                {/* Card 3 – VoyKe IQ Coins */}
                 <div className="vs-card vs-purple">
                     <div className="vs-blur"></div>
                     <div className="vs-body">
                         <div className="vs-header">
                             <Coins size={20} className="icon-purple" />
-                            <span>YouBook Coins</span>
+                            <span>VoyKe IQ Coins</span>
                         </div>
-                        <div className="vs-val text-purple">{youBookCoins}</div>
+                        <div className="vs-val text-purple">{voykeIQCoins}</div>
                         <div className="vs-lbl">coins</div>
                     </div>
                 </div>
@@ -149,8 +149,8 @@ const VaultComp = () => {
                 {/* ── LEFT COLUMN ── */}
                 <div className="vault-left">
 
-                    {/* YouBook Coin Wallet */}
-                    <YouBookWallet coins={youBookCoins} />
+                    {/* VoyKe IQ Coin Wallet */}
+                    <YouBookWallet coins={voykeIQCoins} />
 
                     {/* Gold Wallets Section */}
                     <div className="gw-section">
@@ -399,7 +399,7 @@ const VaultComp = () => {
                             onClick={e => e.stopPropagation()}
                         >
                             <h2 className="v-m-title">Coin Exchange</h2>
-                            <p className="v-m-desc">Tillani YouBook Coinlariga almashtiring</p>
+                            <p className="v-m-desc">Tillani VoyKe IQ Coinlariga almashtiring</p>
                             
                             <div className="v-ex-grid">
                                 <div className="v-ex-box">

@@ -6,7 +6,7 @@ import './Wallet.scss';
 const Wallet = ({ stats = {} }) => {
     const navigate = useNavigate();
     const { 
-        ybcBalance = 250000, // YouBook Coins
+        ybcBalance = 250000, // VoyKe IQ Coins
         goldGrams = 0.0045,   // Grams of Gold
     } = stats;
 

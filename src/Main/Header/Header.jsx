@@ -56,7 +56,7 @@ const Header = ({ onMenuClick, notificationCount = 0 }) => {
                 ) : (
                     <div className="header-branding">
                         <div className="logo-icon">👑</div>
-                        <span className="brand-name">YouBook</span>
+                        <span className="brand-name">VoyKe IQ</span>
                     </div>
                 )}
 

@@ -38,12 +38,9 @@
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-
-  @media (max-width: 1400px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  align-items: stretch;
 
   @media (max-width: 600px) {
     grid-template-columns: 1fr;
@@ -59,25 +56,6 @@
       .scp-label { font-size: 11px; }
     }
   }
-
-  /* Ultra Narrow Fixes (340px - 380px) */
-  @media (max-width: 380px) {
-     gap: 0.5rem;
-     
-     .stats-header {
-        margin-bottom: 1rem;
-        .section-title { font-size: 1.25rem; }
-        .stats-updated { font-size: 0.65rem; }
-     }
-
-     .stat-card-premium {
-        padding: 1rem;
-        border-radius: 1.25rem;
-        .scp-value { font-size: 1.5rem; }
-        .scp-icon-wrap { width: 38px; height: 38px; }
-        .scp-trend { padding: 0.25rem 0.5rem; font-size: 0.65rem; }
-     }
-  }
 }
 
 .stat-card-premium {
@@ -90,6 +68,7 @@
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
+  min-height: 210px;
   z-index: 1;
 
   &::before {
@@ -114,6 +93,9 @@
 .scp-content {
   position: relative;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .scp-top {
@@ -152,6 +134,7 @@
 
 .scp-body {
   margin-bottom: 1.5rem;
+  min-height: 72px;
 }
 
 .scp-value {
@@ -177,6 +160,7 @@
 
 .scp-footer {
   width: 100%;
+  margin-top: auto;
 }
 
 .scp-progress {
@@ -208,6 +192,35 @@
   transition: all 0.4s;
   z-index: 0;
   pointer-events: none;
+}
+
+.stats-empty {
+  grid-column: 1 / -1;
+  padding: 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  border: 1px dashed var(--border-color);
+  border-radius: 1rem;
+  background: var(--bg-secondary);
+}
+
+@media (max-width: 380px) {
+  .section-title { font-size: 1.25rem; }
+  .stats-updated { font-size: 0.65rem; }
+
+  .stats-grid {
+    gap: 0.5rem;
+  }
+
+  .stat-card-premium {
+    padding: 1rem;
+    border-radius: 1.25rem;
+    min-height: 190px;
+  }
+
+  .scp-value { font-size: 1.5rem; }
+  .scp-icon-wrap { width: 38px; height: 38px; }
+  .scp-trend { padding: 0.25rem 0.5rem; font-size: 0.65rem; }
 }
 
 // Color Themes

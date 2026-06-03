@@ -65,7 +65,7 @@ const YouBookWallet = ({ coins = 15000 }) => {
                             <Crown size={14} className="crown-yellow" />
                             Premium Wallet
                         </span>
-                        <h2 className="ybw-main-title">YouBook Coin</h2>
+                        <h2 className="ybw-main-title">VoyKe IQ Coin</h2>
                         <p className="ybw-subtitle">Asosiy hamyon</p>
                     </div>
                     <div className="ybw-coin-wrap">

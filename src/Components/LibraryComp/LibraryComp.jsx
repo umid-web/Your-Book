@@ -32,6 +32,13 @@ const LibraryComp = () => {
         return;
       }
 
+      // 1. Check cache for instant load
+      const cachedLibrary = sessionStorage.getItem('libraryDataCache');
+      if (cachedLibrary) {
+        setLibraryData(JSON.parse(cachedLibrary));
+        setLoading(false);
+      }
+
       console.log('Fetching Django library data...');
       let sectionsData = [];
       let categoriesData = [];
@@ -67,8 +74,7 @@ const LibraryComp = () => {
         book_count: sec.book_count || 4
       }));
 
-      setLibraryData(prev => ({
-        ...prev,
+      const newLibraryData = {
         sections: mappedSections,
         categories: categoriesData,
         stats: {
@@ -76,8 +82,13 @@ const LibraryComp = () => {
           sections: mappedSections.length,
           openSections: mappedSections.filter(s => s.status !== 'locked').length,
           reading: mappedSections.filter(s => s.status === 'active').length
-        }
-      }));
+        },
+        currentReading: null,
+        userStats: { booksRead: 0, coinsSpent: 0, hoursSpent: 0 }
+      };
+
+      setLibraryData(newLibraryData);
+      sessionStorage.setItem('libraryDataCache', JSON.stringify(newLibraryData));
       setLoading(false);
     } catch (error) {
       console.error('Error in library flow:', error);

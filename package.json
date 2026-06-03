@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"npm run server\" \"vite --force\"",
+    "dev": "vite --force",
+    "dev:mock": "concurrently \"npm run server\" \"vite --force\"",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",

@@ -17,7 +17,7 @@ const KitoblarStats = () => {
 
     const fetchStats = async () => {
         try {
-            const response = await fetch('http://localhost:3000/stats');
+            const response = await fetch('/stats');
             const data = await response.json();
             setStats(data);
         } catch (error) {

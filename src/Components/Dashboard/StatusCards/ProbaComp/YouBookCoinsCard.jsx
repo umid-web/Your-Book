@@ -17,7 +17,7 @@ const YouBookCoinsCard = ({ data }) => {
                     </svg>
                 </div>
                 <div className="text-content">
-                    <h3>{data?.title || 'YouBook Coins'}</h3>
+                    <h3>{data?.title || 'VoyKe IQ Coins'}</h3>
                     <p className="subtitle">{data?.subtitle || 'Sizning balansingiz'}</p>
                 </div>
             </header>

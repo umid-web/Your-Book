@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-const Api_Address = "http://10.193.255.176:8000"
+const Api_Address = "https://for-railway.onrender.com"
 
 export default defineConfig({
   plugins: [react()],
@@ -9,6 +9,26 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 5174,
     proxy: {
+      '/coinWallet': {
+        target: Api_Address,
+        changeOrigin: true,
+        secure: false
+      },
+      '/iqTest': {
+        target: Api_Address,
+        changeOrigin: true,
+        secure: false
+      },
+      '/stats': {
+        target: Api_Address,
+        changeOrigin: true,
+        secure: false
+      },
+      '/sections': {
+        target: Api_Address,
+        changeOrigin: true,
+        secure: false
+      },
       '/api': {
         target: Api_Address,
         changeOrigin: true,

@@ -26,7 +26,7 @@
     "totalGoldValue": 1234.5,
     "activeWallets": 1,
     "totalWallets": 16,
-    "youbookCoins": 5000,
+    "voykeIQCoins": 5000,
     "currentGoldPrice": 999.9,
     "priceChange": 2.5
   },
@@ -104,7 +104,7 @@
       "goldPrice": { "title": "Gold Price", "subtitle": "per gram", "value": "99.9", "change": "+2.5%", "isPositive": true, "footer": "Last Update", "lastUpdated": "2m ago" },
       "goldRate": { "title": "Gold Rate", "subtitle": "Market Rate", "value": "x2.5", "change": "+0.1", "isPositive": true, "footer": "Current Trend" },
       "iqProgress": { "title": "IQ Progress", "subtitle": "Weekly", "value": "650", "change": "+15", "isPositive": true, "footer": "Level 5" },
-      "youbookCoins": { "title": "Coins", "subtitle": "Balance", "value": "5000", "change": "+450", "isPositive": true, "footer": "Today" }
+      "voykeIQCoins": { "title": "Coins", "subtitle": "Balance", "value": "5000", "change": "+450", "isPositive": true, "footer": "Today" }
     },
     "activities": {
       "title": "So'nggi harakatlar",

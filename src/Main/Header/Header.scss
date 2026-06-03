@@ -14,13 +14,15 @@
     padding: 0 32px;
     z-index: 900;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    background: rgba(3, 5, 10, 0.6);
+    backdrop-filter: var(--glass-blur);
 
     .header-mobile-glass {
         display: none;
         position: absolute;
         inset: 0;
-        backdrop-filter: blur(15px) saturate(180%);
-        background: var(--navbar-bg);
+        backdrop-filter: blur(25px) saturate(200%);
+        background: linear-gradient(to bottom, rgba(3, 5, 10, 0.9), rgba(3, 5, 10, 0.7));
         z-index: -1;
 
         @media (max-width: 768px) {
@@ -108,15 +110,16 @@
             }
 
             .current-page-indicator {
-                font-size: 13px;
-                font-weight: 700;
-                color: var(--text-muted);
+                font-size: 11px;
+                font-weight: 800;
+                color: var(--accent-primary);
                 text-transform: uppercase;
-                letter-spacing: 1.2px;
-                background: rgba(255, 255, 255, 0.03);
-                padding: 6px 14px;
+                letter-spacing: 2px;
+                background: rgba(212, 175, 55, 0.05);
+                padding: 6px 16px;
                 border-radius: 20px;
-                border: 1px solid rgba(255, 255, 255, 0.05);
+                border: 1px solid var(--border-gold);
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.05);
             }
         }
     }

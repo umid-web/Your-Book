@@ -11,7 +11,7 @@ const StatusCards = ({ data }) => {
         <div className="status-cards-container">
             <GoldPriceCard data={data.goldPrice} />
             <IQProgressCard data={data.iqProgress} />
-            <YouBookCoinsCard data={data.youbookCoins} />
+            <YouBookCoinsCard data={data.voykeIQCoins} />
         </div>
     );
 };

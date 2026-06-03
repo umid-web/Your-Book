@@ -40,7 +40,7 @@ const PremiumSettingsComp = () => {
         <div className="ps-crown-glow">
           <Crown size={48} className="crown-icon" />
         </div>
-        <h1 className="ps-promo-title">YouBook Premium</h1>
+        <h1 className="ps-promo-title">VoyKe IQ Premium</h1>
         <p className="ps-promo-subtitle">Bilim olamiga cheksiz kirish va tilla mukofotlar kutmoqda</p>
       </div>
 

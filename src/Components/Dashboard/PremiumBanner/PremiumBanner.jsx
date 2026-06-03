@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 const PremiumBanner = ({ onClose, onUpgrade }) => {
     return (
-        <div className="premium-ad-banner">
+        <div className="premium-cinematic-banner">
             <div className="ad-content">
                 <div className="ad-icon-wrap">
                     <span>👑</span>

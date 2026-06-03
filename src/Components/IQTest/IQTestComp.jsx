@@ -216,8 +216,19 @@ const IQTestComp = () => {
     const [settings, setSettings] = useState({});
 
     useEffect(() => {
+        let cachedData = null;
         const loadIQTestData = async () => {
             try {
+                const cachedString = sessionStorage.getItem('iqTestDataCache');
+                if (cachedString) {
+                    cachedData = JSON.parse(cachedString);
+                    setQuestions(cachedData.questions);
+                    setSettings(cachedData.settings);
+                    setAnswers(Array(10).fill(null));
+                    setTimeLeft(120);
+                    setLoading(false);
+                }
+
                 // Fallback questions if backend fails
                 const fallbackQuestions = [
                     { id: 1, question: "Qaysi biri mantiqiy ketma-ketlikni to'ldiradi: 2, 4, 8, 16, ...?", options: ["20", "24", "32", "64"], answer: 2, category: "Mantiq" },
@@ -236,7 +247,7 @@ const IQTestComp = () => {
 
                 let data;
                 try {
-                    const response = await fetch('http://localhost:3000/iqTest');
+                    const response = await fetch('/iqTest');
                     data = await response.json();
                 } catch (e) {
                     data = { questions: fallbackQuestions, settings: { timePerQuestion: 120 } };
@@ -247,13 +258,21 @@ const IQTestComp = () => {
                 const selectedQs = shuffled.slice(0, 10);
                 
                 setQuestions(selectedQs);
-                setSettings(data.settings || { timePerQuestion: 120 });
-                setAnswers(Array(10).fill(null));
-                setTimeLeft(120);
+                const s = data.settings || { timePerQuestion: 120 };
+                setSettings(s);
+                
+                if (!cachedData) {
+                    setAnswers(Array(10).fill(null));
+                    setTimeLeft(120);
+                }
+                
+                sessionStorage.setItem('iqTestDataCache', JSON.stringify({ questions: selectedQs, settings: s }));
             } catch (error) {
                 console.error('Failed to load IQ test data:', error);
             } finally {
-                setLoading(false);
+                if (!cachedData) {
+                    setLoading(false);
+                }
             }
         };
         loadIQTestData();

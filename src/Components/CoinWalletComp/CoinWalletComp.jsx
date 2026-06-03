@@ -47,13 +47,22 @@ const CoinWalletComp = () => {
     };
 
     useEffect(() => {
+        let cachedData = null;
         const fetchData = async () => {
             try {
+                cachedData = sessionStorage.getItem('coinWalletDataCache');
+                if (cachedData) {
+                    setData(JSON.parse(cachedData));
+                    setLoading(false);
+                }
+
                 // Since this might run in a real environment, I'll add a fallback
-                const res = await fetch('http://localhost:3000/coinWallet');
+                const res = await fetch('/coinWallet');
                 if (!res.ok) throw new Error('Network response was not ok');
                 const json = await res.json();
                 setData(json);
+                sessionStorage.setItem('coinWalletDataCache', JSON.stringify(json));
+                setLoading(false);
             } catch (err) {
                 console.warn('Error fetching coin wallet data, using mock data:', err);
                 const mockData = {
@@ -75,8 +84,11 @@ const CoinWalletComp = () => {
                     stats: { totalEarned: 15200, totalSpent: 2700, weekly: 3200, today: 600, streakBonus: "+15%" }
                 };
                 setData(mockData);
+                sessionStorage.setItem('coinWalletDataCache', JSON.stringify(mockData));
             } finally {
-                setLoading(false);
+                if (!cachedData) {
+                    setLoading(false);
+                }
             }
         };
         fetchData();
@@ -145,7 +157,7 @@ const CoinWalletComp = () => {
                             <Coins size={28} className="cw-title-icon" />
                             Coin Hamyon
                         </h1>
-                        <p className="cw-page-sub">YouBook tanga tizimini boshqaring</p>
+                        <p className="cw-page-sub">VoyKe IQ tanga tizimini boshqaring</p>
                     </div>
                     <div className="cw-header-badge">
                         <Crown size={16} />

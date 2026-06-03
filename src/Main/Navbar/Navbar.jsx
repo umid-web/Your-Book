@@ -253,7 +253,7 @@ const Navbar = ({ onMobileClose = () => { }, isCollapsed, onToggleCollapse, onWa
                     <div className="logo-orb" />
                     <div className="logo-icon">👑</div>
                     <div className="logo-stack">
-                        <span className="brand">YouBook</span>
+                        <span className="brand">VoyKe IQ</span>
                         <span className="suffix">Empire v2</span>
                     </div>
                 </div>

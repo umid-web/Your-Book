@@ -133,7 +133,7 @@ const Login = () => {
       // Mock temporary user for simulation
       const mockUser = {
         firstName: 'Umidjon',
-        lastName: 'YouBook User',
+        lastName: 'VoyKe IQ User',
         phone: formData.phone || '+998 00 000 00 00',
         is_premium: true
       };

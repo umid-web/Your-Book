@@ -37,98 +37,90 @@ const DeleteAccountComp = () => {
         <h1 className="psp-title">Hisobni O&apos;chirish</h1>
       </div>
 
-      <div className="bg-red-900/30 border border-red-500/50 rounded-2xl p-4 mb-6 flex items-start gap-3 text-sm">
-        <AlertTriangle className="w-5 h-5 text-red-400 mt-0.5" />
-        <div>
-          <div className="font-semibold mb-1">Diqqat! Bu amalni qaytarib bo&apos;lmaydi!</div>
-          <div className="text-red-100 text-xs">
+      <div className="da-alert-banner">
+        <AlertTriangle className="alert-icon" />
+        <div className="alert-content">
+          <div className="alert-title">Diqqat! Bu amalni qaytarib bo&apos;lmaydi!</div>
+          <div className="alert-desc">
             Hisobni o&apos;chirsangiz, barcha ma&apos;lumotlar, yutuqlar va tilla balansingiz
             butunlay yo&apos;qoladi.
           </div>
         </div>
       </div>
 
-      <div className="grid gap-3 md:grid-cols-4 mb-6 text-xs">
-        <div className="bg-gray-900/80 border border-gray-700/60 rounded-2xl p-4">
-          <div className="flex items-center gap-2 mb-1">
-            <Database className="w-4 h-4 text-red-300" />
-            <span className="font-semibold">Ma&apos;lumotlar yo&apos;qoladi</span>
+      <div className="da-consequences-grid">
+        <div className="consequence-card">
+          <div className="card-header">
+            <Database style={{ color: '#fca5a5' }} />
+            <span>Ma&apos;lumotlar yo&apos;qoladi</span>
           </div>
-          <div className="text-gray-400">
+          <div className="card-desc">
             Barcha shaxsiy ma&apos;lumotlar va sozlamalar o&apos;chiriladi.
           </div>
         </div>
-        <div className="bg-gray-900/80 border border-gray-700/60 rounded-2xl p-4">
-          <div className="flex items-center gap-2 mb-1">
-            <Award className="w-4 h-4 text-amber-300" />
-            <span className="font-semibold">Yutuqlar</span>
+        <div className="consequence-card">
+          <div className="card-header">
+            <Award style={{ color: '#fcd34d' }} />
+            <span>Yutuqlar</span>
           </div>
-          <div className="text-gray-400">
+          <div className="card-desc">
             Barcha yutuqlar va progressingiz yo&apos;qoladi.
           </div>
         </div>
-        <div className="bg-gray-900/80 border border-gray-700/60 rounded-2xl p-4">
-          <div className="flex items-center gap-2 mb-1">
-            <Crown className="w-4 h-4 text-amber-400" />
-            <span className="font-semibold">Premium</span>
+        <div className="consequence-card">
+          <div className="card-header">
+            <Crown style={{ color: '#fbbf24' }} />
+            <span>Premium</span>
           </div>
-          <div className="text-gray-400">
+          <div className="card-desc">
             Premium obuna bekor qilinadi va qaytarilmaydi.
           </div>
         </div>
-        <div className="bg-gray-900/80 border border-gray-700/60 rounded-2xl p-4">
-          <div className="flex items-center gap-2 mb-1">
-            <Coins className="w-4 h-4 text-yellow-300" />
-            <span className="font-semibold">Tilla hamyonlar</span>
+        <div className="consequence-card">
+          <div className="card-header">
+            <Coins style={{ color: '#fde047' }} />
+            <span>Tilla hamyonlar</span>
           </div>
-          <div className="text-gray-400">
+          <div className="card-desc">
             Barcha tilla va coinlar balansidan voz kechiladi.
           </div>
         </div>
       </div>
 
-      <div className="bg-gray-900/80 border border-gray-700/60 rounded-2xl p-6 mb-6 text-xs">
-        <div className="font-semibold mb-3">Ketishdan oldin tavsiyalar</div>
-        <ul className="space-y-1 text-gray-300">
-          <li>▪ Ma&apos;lumotlarni yuklab oling</li>
-          <li>▪ Tilla hamyonlarni naqdlang</li>
-          <li>▪ Premium obunani bekor qiling</li>
-          <li>▪ Do&apos;stlarni ogohlantiring</li>
+      <div className="da-recommendations">
+        <h3>Ketishdan oldin tavsiyalar</h3>
+        <ul>
+          <li>Ma&apos;lumotlarni yuklab oling</li>
+          <li>Tilla hamyonlarni naqdlang</li>
+          <li>Premium obunani bekor qiling</li>
+          <li>Do&apos;stlarni ogohlantiring</li>
         </ul>
       </div>
 
-      <div className="bg-gray-900/80 border border-gray-700/60 rounded-2xl p-6 mb-6 text-xs space-y-4">
-        <div className="space-y-1">
-          <label className="block text-gray-300 mb-1">
-            Parolingizni kiriting
-          </label>
+      <div className="da-form-section">
+        <div className="form-group">
+          <label>Parolingizni kiriting</label>
           <input
             type="password"
-            className="w-full bg-gray-950 border border-gray-700 rounded-lg px-3 py-2 text-xs outline-none"
+            placeholder="Parolingizni kiriting..."
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
-        <div className="space-y-1">
-          <label className="block text-gray-300 mb-1">
-            DELETE so&apos;zini yozing
-          </label>
+        <div className="form-group">
+          <label>DELETE so&apos;zini yozing</label>
           <input
             type="text"
-            className="w-full bg-gray-950 border border-gray-700 rounded-lg px-3 py-2 text-xs outline-none"
             placeholder="DELETE"
             value={confirmText}
             onChange={(e) => setConfirmText(e.target.value)}
           />
         </div>
 
-        <div className="space-y-1">
-          <label className="block text-gray-300 mb-1">
-            Sabab tanlang
-          </label>
+        <div className="form-group">
+          <label>Sabab tanlang</label>
           <select
-            className="w-full bg-gray-950 border border-gray-700 rounded-lg px-3 py-2 text-xs outline-none"
             value={reason}
             onChange={(e) => setReason(e.target.value)}
           >
@@ -140,24 +132,22 @@ const DeleteAccountComp = () => {
           </select>
         </div>
 
-        <div className="space-y-1">
-          <label className="block text-gray-300 mb-1">
-            Qo&apos;shimcha izoh (ixtiyoriy)
-          </label>
+        <div className="form-group">
+          <label>Qo&apos;shimcha izoh (ixtiyoriy)</label>
           <textarea
             rows={3}
-            className="w-full bg-gray-950 border border-gray-700 rounded-lg px-3 py-2 text-xs outline-none resize-none"
+            placeholder="Ixtiyoriy fikr-mulohazalar..."
+            style={{ resize: 'vertical', minHeight: '80px' }}
             value={details}
             onChange={(e) => setDetails(e.target.value)}
           />
         </div>
 
-        <label className="flex items-start gap-2 text-xs text-gray-300">
+        <label className="form-checkbox">
           <input
             type="checkbox"
             checked={agreed}
             onChange={(e) => setAgreed(e.target.checked)}
-            className="mt-0.5"
           />
           <span>
             Men barcha oqibatlarni to&apos;liq tushundim va hisobimni o&apos;chirishga roziman.
@@ -165,10 +155,10 @@ const DeleteAccountComp = () => {
         </label>
       </div>
 
-      <div className="flex justify-between gap-3 text-xs">
+      <div className="da-actions">
         <button
           onClick={() => navigate('/profile')}
-          className="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700"
+          className="btn-back"
         >
           Orqaga Qaytish
         </button>
@@ -179,45 +169,39 @@ const DeleteAccountComp = () => {
             setModalOpen(true);
             setCountdown(10);
           }}
-          className={`px-4 py-2 rounded-lg ${
-            canDelete
-              ? 'bg-red-700 hover:bg-red-600'
-              : 'bg-red-900/40 text-red-300 cursor-not-allowed'
-          }`}
+          className="btn-delete"
         >
           Hisobni O&apos;chirish
         </button>
       </div>
 
       {modalOpen && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 text-xs">
-          <div className="bg-gray-900 border border-gray-700 rounded-2xl p-6 w-full max-w-sm">
-            <div className="flex items-center gap-2 mb-3">
-              <AlertTriangle className="w-4 h-4 text-red-400" />
-              <h2 className="font-semibold text-sm">Oxirgi tasdiqlash</h2>
+        <div className="da-modal-overlay">
+          <div className="da-modal">
+            <div className="modal-header">
+              <AlertTriangle />
+              <h2>Oxirgi tasdiqlash</h2>
             </div>
-            <p className="text-gray-300 mb-3">
-              Rostdan ham hisobingizni butunlay o&apos;chirmoqchimisiz?
-            </p>
-            <p className="text-gray-400 mb-4">
-              {countdown > 0
-                ? `Tasdiqlash tugmasi ${countdown} soniyadan so'ng faollashadi.`
-                : 'Tasdiqlash tugmasi faollashdi.'}
-            </p>
-            <div className="flex justify-end gap-2">
+            <div className="modal-body">
+              <p className="primary-text">
+                Rostdan ham hisobingizni butunlay o&apos;chirmoqchimisiz?
+              </p>
+              <p className="countdown-text">
+                {countdown > 0
+                  ? `Tasdiqlash tugmasi ${countdown} soniyadan so'ng faollashadi.`
+                  : 'Tasdiqlash tugmasi faollashdi.'}
+              </p>
+            </div>
+            <div className="modal-actions">
               <button
                 onClick={() => setModalOpen(false)}
-                className="px-3 py-2 rounded-lg bg-gray-800"
+                className="btn-keep"
               >
                 Yo&apos;q, Saqlab Qolish
               </button>
               <button
                 disabled={countdown > 0}
-                className={`px-3 py-2 rounded-lg ${
-                  countdown > 0
-                    ? 'bg-red-900/40 text-red-300 cursor-not-allowed'
-                    : 'bg-red-700 hover:bg-red-600'
-                }`}
+                className="btn-confirm"
               >
                 Ha, O&apos;chirish
               </button>

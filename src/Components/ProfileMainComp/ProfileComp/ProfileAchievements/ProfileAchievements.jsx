@@ -52,7 +52,7 @@ const ProfileAchievements = ({ achievements, onRefresh, addToast }) => {
       <h3 className="section-title">Yutuqlar va Mukofotlar</h3>
       <div className="achv-grid">
         {achievements && achievements.length > 0 ? (
-          achievements.map((achv) => {
+          achievements.map((achv, index) => {
             const isCompleted = achv.is_completed;
             const isClaimed = achv.claimed;
             const canClaim = isCompleted && !isClaimed;
@@ -60,7 +60,7 @@ const ProfileAchievements = ({ achievements, onRefresh, addToast }) => {
             return (
               <div 
                 className={`achv-card ${isCompleted ? 'unlocked' : 'locked'} ${isClaimed ? 'claimed' : ''}`} 
-                key={achv.id}
+                key={achv.id || `achv-${index}`}
               >
                 <div className="achv-visual">
                   <div className="achv-icon-wrap">

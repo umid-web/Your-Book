@@ -1,13 +1,30 @@
 import React from 'react';
-import { ArrowUpRight, TrendingUp, Info } from 'lucide-react';
+import { ArrowUpRight, TrendingUp } from 'lucide-react';
 import './ProfileStats.scss';
 
 const ProfileStats = ({ stats }) => {
+  const getProgressWidth = (stat) => {
+    const fallbackProgress = 70;
+    const rawValue = typeof stat?.value === 'string'
+      ? parseFloat(stat.value)
+      : Number(stat?.value);
+
+    if (Number.isNaN(rawValue)) {
+      return `${fallbackProgress}%`;
+    }
+
+    const isAccuracyStat = stat?.label?.includes('Accuracy');
+    const normalizedValue = isAccuracyStat ? rawValue : Math.min(rawValue, fallbackProgress);
+    const clampedValue = Math.max(0, Math.min(normalizedValue, 100));
+
+    return `${clampedValue}%`;
+  };
+
   return (
     <div className="section-block">
       <div className="stats-header">
         <h3 className="section-title">Ko'rsatkichlar</h3>
-        <span className="stats-updated">Sho'ng'i haftalik natijalar</span>
+        <span className="stats-updated">So'nggi haftalik natijalar</span>
       </div>
       
       <div className="stats-grid">
@@ -32,7 +49,7 @@ const ProfileStats = ({ stats }) => {
 
                 <div className="scp-footer">
                   <div className="scp-progress">
-                    <div className="scp-bar" style={{ width: st.label?.includes('Accuracy') ? st.value : '70%' }}></div>
+                    <div className="scp-bar" style={{ width: getProgressWidth(st) }}></div>
                   </div>
                 </div>
               </div>

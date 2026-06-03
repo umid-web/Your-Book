@@ -132,7 +132,7 @@ const WalletFillModal = ({ isOpen, onClose }) => {
                 <div className="modal-top">
                     <div className="modal-branding">
                         <div className="branding-icon"><Coins size={20} /></div>
-                        <span className="branding-text">YouBook Coin Market</span>
+                        <span className="branding-text">VoyKe IQ Coin Market</span>
                     </div>
                     <button className="modal-close-trigger" onClick={onClose}><X size={20} /></button>
                 </div>
@@ -155,7 +155,7 @@ const WalletFillModal = ({ isOpen, onClose }) => {
                         <div className="step-content animate-in">
                             <div className="content-intro">
                                 <h1>Coins Balansini To'ldirish</h1>
-                                <p>Sizga mos paketni tanlang va YouBook Empire imkoniyatlaridan foydalaning</p>
+                                <p>Sizga mos paketni tanlang va VoyKe IQ Empire imkoniyatlaridan foydalaning</p>
                             </div>
                             <div className="topup-grid">
                                 {amounts.map(item => (

@@ -195,7 +195,7 @@ const Footer = memo(() => {
                         {/* Logo & Info */}
                         <div className="footer-brand">
                             <Link to="/" className="footer-logo" aria-label="Bosh sahifa">
-                                <span className="logo-text">YouBook</span>
+                                <span className="logo-text">VoyKe IQ</span>
                                 <span className="logo-badge">beta</span>
                             </Link>
 

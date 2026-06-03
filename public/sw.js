@@ -1,4 +1,4 @@
-const CACHE_NAME = 'youbook-v1';
+const CACHE_NAME = 'voyke-iq-v1';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -92,7 +92,7 @@ function doBackgroundSync() {
 // Push notification handler
 self.addEventListener('push', (event) => {
   const options = {
-    body: event.data ? event.data.text() : 'YouBook dan yangi bildirnoma',
+    body: event.data ? event.data.text() : 'VoyKe IQ dan yangi bildirnoma',
     icon: '/vite.svg',
     badge: '/vite.svg',
     vibrate: [100, 50, 100],
@@ -115,7 +115,7 @@ self.addEventListener('push', (event) => {
   };
 
   event.waitUntil(
-    self.registration.showNotification('YouBook', options)
+    self.registration.showNotification('VoyKe IQ', options)
   );
 });
 

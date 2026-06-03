@@ -50,7 +50,7 @@ const LeaderboardComp = () => {
                 <div className="lb-header-content">
                     <Trophy className="lb-trophy-icon" size={48} />
                     <h1 className="lb-title">Peshqadamlar Jadvali</h1>
-                    <p className="lb-subtitle">YouBook hamjamiyatining eng kuchli foydalanuvchilari</p>
+                    <p className="lb-subtitle">VoyKe IQ hamjamiyatining eng kuchli foydalanuvchilari</p>
                 </div>
 
                 <div className="lb-tabs">

@@ -36,6 +36,13 @@ const DashboardComp = () => {
           currently_reading: { title: "Al-Kimyogar", author: "Paulo Koelo", progress_percentage: 65 }
         };
 
+        // 1. Try to load from cache immediately for fast rendering
+        const cachedData = sessionStorage.getItem('dashboardDataCache');
+        if (cachedData) {
+          setDbData(JSON.parse(cachedData));
+          setLoading(false); // Remove loading spinner immediately
+        }
+
         let homeData = mockResponse;
         
         if (token) {
@@ -49,7 +56,7 @@ const DashboardComp = () => {
           }
         }
         
-        setDbData({
+        const newDbData = {
           userProfile: {
             name: homeData.profile?.full_name || user?.firstName || 'Foydalanuvchi',
             isPremium: homeData.profile?.is_premium || false,
@@ -106,7 +113,11 @@ const DashboardComp = () => {
               }
             }
           }
-        });
+        };
+
+        // 2. Set new state and cache
+        setDbData(newDbData);
+        sessionStorage.setItem('dashboardDataCache', JSON.stringify(newDbData));
       } catch (err) {
         console.error('Error loading dashboard:', err);
       } finally {

@@ -42,13 +42,47 @@ const ProfileMainComp = () => {
   const [loading, setLoading] = useState(true);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
+  const buildLocalProfileFallback = () => ({
+    name: authUser?.full_name || authUser?.name || `${authUser?.firstName || ''} ${authUser?.lastName || ''}`.trim() || 'Foydalanuvchi',
+    email: authUser?.email || 'Email kiritilmagan',
+    phone: authUser?.phone_number || authUser?.phone || 'Raqam kiritilmagan',
+    isPremium: authUser?.is_premium || authUser?.isPremium || false,
+    profile_image: authUser?.profile_image || null,
+    username: authUser?.username || '',
+    bio: authUser?.bio || '',
+    gender: authUser?.gender || '',
+    address: authUser?.address || '',
+    date_of_birth: authUser?.date_of_birth || '',
+    iqLevel: 0,
+    maxIQ: 100,
+    booksRead: 0,
+    streak: 0,
+    totalQuestions: 0,
+    coins: 0,
+    todayCoins: 0,
+    karat: 0,
+    joinDate: authUser?.created_at ? new Date(authUser.created_at).toLocaleDateString() : 'Noma\'lum',
+    lastSeen: 'Hozirgina',
+    status: 'Faol',
+    achievements: [],
+    activities: []
+  });
+
   const loadProfileData = async () => {
+    let cachedProfile = null;
     try {
       const token = localStorage.getItem('access_token');
       if (!token) {
         console.warn('Profile: No access token found');
         navigate('/login');
         return;
+      }
+
+      // 1. Try to load cache immediately
+      cachedProfile = sessionStorage.getItem('profileDataCache');
+      if (cachedProfile) {
+        setDbProfile(JSON.parse(cachedProfile));
+        setLoading(false);
       }
 
       const [profileRes, achvRes] = await Promise.all([
@@ -83,31 +117,34 @@ const ProfileMainComp = () => {
         activities: backendProfile.activities || []
       };
       
+      // Update state and cache
       setDbProfile(mappedProfile);
+      sessionStorage.setItem('profileDataCache', JSON.stringify(mappedProfile));
       setLoading(false);
 
     } catch (err) {
       console.error('Error loading profile from Django:', err);
+      const token = localStorage.getItem('access_token');
+      const isMockSession = token === 'offline-token' || token === 'mock-access-token' || token === 'face-id-temp-token';
       
-      if (err.response?.status === 401) {
+      if (err.response?.status === 401 && !isMockSession) {
         addToast('Sessiya muddati tugadi, iltimos qayta kiring', 'error');
         setTimeout(() => navigate('/login'), 2000);
       } else {
-        try {
-           const fallbackRes = await axios.get('http://localhost:3000/userProfile');
-           setDbProfile(fallbackRes.data);
-        } catch (fbErr) {
-           setLoading(false);
-        }
+        const localFallback = buildLocalProfileFallback();
+        setDbProfile(localFallback);
+        sessionStorage.setItem('profileDataCache', JSON.stringify(localFallback));
       }
     } finally {
-      setLoading(false);
+      if (!cachedProfile) {
+        setLoading(false);
+      }
     }
   };
 
   useEffect(() => {
     loadProfileData();
-  }, [navigate]);
+  }, [navigate, authUser]);
 
   const handleUpdateProfile = async (updatedData) => {
     try {
